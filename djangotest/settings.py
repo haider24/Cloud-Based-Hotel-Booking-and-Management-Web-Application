@@ -25,7 +25,7 @@ SECRET_KEY = '!bb*fn1)n(j+0%$hi!m0)d806e5tcg8tm-uqsk0*htjqvccgd('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['djangotestcloud.herokuapp.com']
 
 
 # Application definition

@@ -77,19 +77,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'djangotest.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-
-#DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
-
-# DATABASES['default'] = dj_database_url.config(
-# )
-
-
-DATABASES = {
-    'default': dj_database_url.config()
-}
-
+DATABASES['default']=dj_database_url.config()
 
 # DATABASES = {
 #     'default': {
@@ -100,7 +88,9 @@ DATABASES = {
 #         'HOST': 'ec2-54-225-96-191.compute-1.amazonaws.com',
 #         'PORT': '5432',
 #     }
-#}
+# }
+
+
 
 
 # Password validation

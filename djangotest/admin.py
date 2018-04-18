@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from djangotest.models import Customers
+from djangotest.models import Customer
 
 # Register your models here.
-admin.site.register(Customers)
+admin.site.register(Customer)

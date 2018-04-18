@@ -82,7 +82,15 @@ WSGI_APPLICATION = 'djangotest.wsgi.application'
 
 #DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
-DATABASES['default'] = dj_database_url.config()
+# DATABASES['default'] = dj_database_url.config(
+# )
+
+db_from_env = dj_database_url.config(conn_max_age=500, require_ssl=True)
+DATABASES['default'].update(db_from_env)
+
+# DATABASES = {
+#     'default': dj_database_url.config()
+# }
 
 
 # DATABASES = {

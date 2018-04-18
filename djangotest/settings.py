@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+from django.conf.global_settings import DATABASES
+import dj_database_url
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -77,16 +80,17 @@ WSGI_APPLICATION = 'djangotest.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd7ouqfsmc37v31',
-        'USER': 'raksseickcxisb',
-        'PASSWORD': '82f56ba8127c394e4643f64fb85d1384f662cae0fc37b09366156f7e97ca733b',
-        'HOST': 'ec2-54-225-96-191.compute-1.amazonaws.com',
-        'PORT': '5432',
-    }
-}
+DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'd7ouqfsmc37v31',
+#         'USER': 'raksseickcxisb',
+#         'PASSWORD': '82f56ba8127c394e4643f64fb85d1384f662cae0fc37b09366156f7e97ca733b',
+#         'HOST': 'ec2-54-225-96-191.compute-1.amazonaws.com',
+#         'PORT': '5432',
+#     }
+#}
 
 
 # Password validation

@@ -28,7 +28,7 @@ SECRET_KEY = '!bb*fn1)n(j+0%$hi!m0)d806e5tcg8tm-uqsk0*htjqvccgd('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['cloudhotel.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['cloudhotel.herokuapp.com','127.0.0.1','cloudtesting1234.herokuapp.com']
 
 
 # Application definition
@@ -77,7 +77,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'djangotest.wsgi.application'
 
 
-DATABASES['default']=dj_database_url.config()
+DATABASES['default']=dj_database_url.config(conn_max_age=600,ssl_require=True)
 
 # DATABASES = {
 #     'default': {

@@ -26,10 +26,18 @@ class Room(models.Model):
     image3 = CloudinaryField('image',default=None)
     image4 = CloudinaryField('image',default=None)
 
-    def image1_tag(self):
-        # used in the admin site model as a "thumbnail"
+    def image1Thumbnail(self):
         return mark_safe('<img src="{}" width="150" height="150" />'.format(self.image1.url))
-    image1_tag.short_description = 'Image'
+
+    def image2Thumbnail(self):
+        return mark_safe('<img src="{}" width="150" height="150" />'.format(self.image2.url))
+
+    def image3Thumbnail(self):
+        return mark_safe('<img src="{}" width="150" height="150" />'.format(self.image3.url))
+
+    def image4Thumbnail(self):
+        return mark_safe('<img src="{}" width="150" height="150" />'.format(self.image4.url))
+
 
     def __str__(self):
         return self.type

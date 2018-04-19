@@ -22,8 +22,6 @@ class CustomerAdmin(admin.ModelAdmin):
         return False
 
 class RoomAdmin(admin.ModelAdmin):
-    #fields = ('image1_tag',)
-    #readonly_fields = ('image1_tag',)
     list_display = ('type', 'price','image1_tag','image2','image3','image4')
 
 

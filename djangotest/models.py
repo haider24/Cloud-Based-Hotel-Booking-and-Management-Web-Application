@@ -28,8 +28,8 @@ class Room(models.Model):
     def __str__(self):
         return self.type
 
-    @receiver(pre_delete, sender=models.Room)
-    def photo_delete(sender, instance, **kwargs):
+@receiver(pre_delete, sender=Room)
+def photo_delete(sender, instance, **kwargs):
         cloudinary.uploader.destroy(instance.image1.public_id)
         cloudinary.uploader.destroy(instance.image2.public_id)
         cloudinary.uploader.destroy(instance.image3.public_id)

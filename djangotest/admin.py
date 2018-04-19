@@ -21,12 +21,9 @@ class CustomerAdmin(admin.ModelAdmin):
     def has_add_permission(self, request):
         return False
 
-    class RoomAdmin(admin.ModelAdmin):
-        list_display = ('name', 'email')
-        #form = RoomAdminForm
-    # def has_change_permission(self, request, obj=None):
-    #     return False
+class RoomAdmin(admin.ModelAdmin):
+    list_display = ('type', 'price','image1','image2','image3','image4')
 
 
 admin.site.register(Customer,CustomerAdmin)
-admin.site.register(Room)
+admin.site.register(Room,RoomAdmin)

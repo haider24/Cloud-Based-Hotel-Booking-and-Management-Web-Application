@@ -12,7 +12,7 @@ class RoomAdminForm(ModelForm):
         model = Room
         fields = "__all__"
         widgets = {
-            'image1':forms.ImageField ,
+            'image1':forms.ImageInput ,
         }
 
 class CustomerAdmin(admin.ModelAdmin):

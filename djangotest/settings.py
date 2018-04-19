@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+import cloudinary
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 from django.conf.global_settings import DATABASES
@@ -41,9 +42,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary',
    # 'django.contrib.sites',
 ]
 #SITE_ID = 1
+
+cloudinary.config(
+    cloud_name = "haider24",
+    api_key = "357144673552778",
+    api_secret = "vXtB00Z1Qp7ocDFFuxiEQ4Dsu3A"
+)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

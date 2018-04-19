@@ -22,7 +22,8 @@ class CustomerAdmin(admin.ModelAdmin):
         return False
 
 class RoomAdmin(admin.ModelAdmin):
-    readonly_fields = ('image_tag',)
+    fields = ('image1_tag',)
+    readonly_fields = ('image1_tag',)
     list_display = ('type', 'price','image1_tag','image2','image3','image4')
 
 

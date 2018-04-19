@@ -5,16 +5,12 @@ from djangotest.models import Customer
 # Register your models here.
 
 class CustomerAdmin(admin.ModelAdmin):
-
+    list_display_links = None
     def has_add_permission(self, request):
         return False
 
-    def has_change_permission(self, request, obj=None):
-        return False
-    # def get_actions(self, request):
-    #     actions = super(CustomerAdmin, self).get_actions(request)
-    #     del actions['edit_permissions']
-    #     del actions['add_permissions']
-    #     return actions
+    # def has_change_permission(self, request, obj=None):
+    #     return False
+
 
 admin.site.register(Customer,CustomerAdmin)

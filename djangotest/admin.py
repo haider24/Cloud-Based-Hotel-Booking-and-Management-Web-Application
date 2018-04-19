@@ -10,6 +10,7 @@ from djangotest.models import Customer,Room
 class RoomAdminForm(ModelForm):
     class Meta:
         model = Room
+        fields = "__all__"
         widgets = {
             'image1':forms.ImageField ,
         }

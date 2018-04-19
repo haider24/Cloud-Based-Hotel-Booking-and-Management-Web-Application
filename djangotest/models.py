@@ -14,10 +14,10 @@ class Customer(models.Model):
 class Room(models.Model):
     type = models.CharField(max_length=100)
     price= models.IntegerField()
-    image1=models.CharField(max_length=500)
-    image2 = models.CharField(max_length=500)
-    image3 = models.CharField(max_length=500)
-    image4 = models.CharField(max_length=500)
+    image1 = models.ImageField()
+    image2 = models.ImageField()
+    image3 = models.ImageField()
+    image4 = models.ImageField()
 
     def __str__(self):
         return self.type

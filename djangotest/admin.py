@@ -7,13 +7,13 @@ from djangotest.models import Customer,Room
 # Register your models here.
 
 
-class RoomAdminForm(ModelForm):
-    class Meta:
-        model = Room
-        fields = "__all__"
-        widgets = {
-            'image1':forms.ImageInput ,
-        }
+# class RoomAdminForm(ModelForm):
+#     class Meta:
+#         model = Room
+#         fields = "__all__"
+#         widgets = {
+#             'image1':forms.ImageInput ,
+#         }
 
 class CustomerAdmin(admin.ModelAdmin):
     list_display = ('name', 'email')
@@ -23,7 +23,7 @@ class CustomerAdmin(admin.ModelAdmin):
 
     class RoomAdmin(admin.ModelAdmin):
         list_display = ('name', 'email')
-        form = RoomAdminForm
+        #form = RoomAdminForm
     # def has_change_permission(self, request, obj=None):
     #     return False
 

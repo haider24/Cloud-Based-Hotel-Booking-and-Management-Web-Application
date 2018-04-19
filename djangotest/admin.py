@@ -23,6 +23,7 @@ class CustomerAdmin(admin.ModelAdmin):
 
 class RoomAdmin(admin.ModelAdmin):
     fields = ('image1_tag',)
+    readonly_fields = ('image_tag',)
     list_display = ('type', 'price','image1','image2','image3','image4')
 
 

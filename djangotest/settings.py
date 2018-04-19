@@ -34,14 +34,13 @@ ALLOWED_HOSTS = ['cloudhotel.herokuapp.com','127.0.0.1','cloudtesting1234.heroku
 # Application definition
 
 INSTALLED_APPS = [
-    'djangotest.apps.djangotestConfig',
+    'djangotest.apps.DjangotestConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'djangotest'
    # 'django.contrib.sites',
 ]
 #SITE_ID = 1

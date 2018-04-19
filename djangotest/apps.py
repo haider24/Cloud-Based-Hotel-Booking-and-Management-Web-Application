@@ -1,7 +1,7 @@
 from django.apps import AppConfig
 
 
-class djangotestConfig(AppConfig):
+class DjangotestConfig(AppConfig):
     name = 'djangotest'
 
 

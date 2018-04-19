@@ -7,4 +7,4 @@ class Customers(models.Model):
     profilePicture=models.CharField(max_length=500)
 
     def __str__(self):
-        return self.choice_text
+        return self.name

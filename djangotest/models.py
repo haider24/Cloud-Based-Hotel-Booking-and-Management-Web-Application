@@ -5,6 +5,7 @@ import cloudinary
 
 # Create your models here.
 from django.dispatch import receiver
+from django.utils.safestring import mark_safe
 
 
 class Customer(models.Model):
@@ -24,6 +25,12 @@ class Room(models.Model):
     image2 = CloudinaryField('image',default=None)
     image3 = CloudinaryField('image',default=None)
     image4 = CloudinaryField('image',default=None)
+
+    def image1_tag(self):
+        # used in the admin site model as a "thumbnail"
+        return mark_safe('<img src="{}" width="150" height="150" />'.format(self.image1.url))
+
+    image1_tag.short_description = 'Image'
 
     def __str__(self):
         return self.type

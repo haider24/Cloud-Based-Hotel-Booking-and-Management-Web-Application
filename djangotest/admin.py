@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from djangotest.models import Customer
+from djangotest.models import Customer,Room
 
 # Register your models here.
 
@@ -15,3 +15,4 @@ class CustomerAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Customer,CustomerAdmin)
+admin.site.register(Room)

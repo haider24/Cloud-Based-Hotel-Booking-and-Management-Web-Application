@@ -29,7 +29,6 @@ class Room(models.Model):
     def image1_tag(self):
         # used in the admin site model as a "thumbnail"
         return mark_safe('<img src="{}" width="150" height="150" />'.format(self.image1.url))
-
     image1_tag.short_description = 'Image'
 
     def __str__(self):

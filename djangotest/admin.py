@@ -22,6 +22,7 @@ class CustomerAdmin(admin.ModelAdmin):
         return False
 
 class RoomAdmin(admin.ModelAdmin):
+    fields = ('image1_tag',)
     list_display = ('type', 'price','image1','image2','image3','image4')
 
 

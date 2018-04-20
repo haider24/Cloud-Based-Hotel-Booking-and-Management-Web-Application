@@ -15,15 +15,10 @@
 
 /*----*/
 #ui-datepicker-div {
-      font-family: 'Open Sans', sans-serif;
-    background: #111313;
-   /* border: 1px solid #383535;*/
-    border-top: none;
-	z-index: 99!important;
+  background:#A9A9A9;
 }
 .ui-datepicker-title span{
-	color: #fff;
-	font-family: 'Open Sans', sans-serif;
+	color: #EEE;
 	font-size: 1.2em;
 }
 /* Interaction Cues
@@ -92,28 +87,28 @@ input.ui-button { padding: .4em 1em; }
 /* workarounds */
 button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra padding in Firefox */
 
-.ui-datepicker {width:16.2%;
+.ui-datepicker {width:15.5%;
 padding: 0 0em 0;
 }
 .ui-datepicker .ui-datepicker-header {
   position: relative;
   padding: .56em 0;
- background: #ffce14;
+  background:#ca951a;
   text-transform: uppercase;
 }
-.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next { position:absolute; top: 10px; width: 1.8em; height: 1.8em; }
+.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next { position:absolute; top: 14px; width: 1.8em; height: 1.8em; }
 .ui-datepicker .ui-datepicker-prev { 
 	left: 10px;
-    width: 14px;
+    width: 20px;
     height: 20px;
-    background: url(../images/c-arrows.png) no-repeat -0px -0px;
+     background:url(../images/img-sp.png) no-repeat -132px -183px;
     cursor: pointer;
 }
 .ui-datepicker .ui-datepicker-next {
 	right: 10px;
-    width: 14px;
+	width: 20px;
     height: 20px;
-    background: url(../images/c-arrows.png) no-repeat -16px -0px;
+    background:url(../images/img-sp.png) no-repeat -150px -183px;
     cursor: pointer;
  }
 .ui-datepicker .ui-datepicker-prev span, .ui-datepicker .ui-datepicker-next span { display: block; position: absolute; left: 50%; margin-left: -8px; top: 50%; margin-top: -8px;  }
@@ -504,44 +499,44 @@ body .ui-tooltip { border-width: 2px; }
 
 /* Overlays */
 .ui-widget-shadow { margin: -8px/*{offsetTopShadow}*/ 0 0 -8px/*{offsetLeftShadow}*/; padding: 8px/*{thicknessShadow}*/; background: #aaaaaa/*{bgColorShadow}*/ url(ui-bg_flat_0_aaaaaa_40x100.png)/*{bgImgUrlShadow}*/ 50%/*{bgShadowXPos}*/ 50%/*{bgShadowYPos}*/ repeat-x/*{bgShadowRepeat}*/; opacity: .3;filter:Alpha(Opacity=30)/*{opacityShadow}*/; -moz-border-radius: 8px/*{cornerRadiusShadow}*/; -khtml-border-radius: 8px/*{cornerRadiusShadow}*/; -webkit-border-radius: 8px/*{cornerRadiusShadow}*/; border-radius: 8px/*{cornerRadiusShadow}*/; }
-@media only screen and (max-width: 1440px) and (min-width: 1366px) {
+@media only screen and (max-width: 1440px){
 	.ui-datepicker {
-		width: 22%;
+		width: 17.3%;
 	}
 }
-@media only screen and (max-width: 1366px) and (min-width: 1280px) {
+@media only screen and (max-width: 1366px){
 	.ui-datepicker {
-		width: 22.15%;
+		width:18.2%;
 	}
 }
 @media (max-width: 1280px){
 	.ui-datepicker {
-		width: 22.3%;
+		width: 19.5%;
 	}
 }
 @media (max-width: 1080px){
 	.ui-datepicker {
-		width: 24.3%;
+		width:23.1%;
 	}
 }
 @media (max-width: 1024px){
 	.ui-datepicker {
-		width: 24.7%;
+		width: 24.4%;
 	}
 }
 @media (max-width:991px){
 	.ui-datepicker {
-		width: 23.5%;
+		width: 25.4%;
 	}
 }
 @media (max-width: 800px){
 	.ui-datepicker {
-		width: 29%;
+		width: 31.5%;
 	}
 }
 @media (max-width:768px){
 	.ui-datepicker {
-		width: 30.4%;
+		width: 31.7%;
 	}
 }
 @media only screen and (max-width: 768px) and (min-width: 640px) {
@@ -560,10 +555,14 @@ body .ui-tooltip { border-width: 2px; }
 		font-size: 1em;
 	}
 }
-@media (max-width:640px){
+@media (max-width: 736px){
+}
+@media (max-width: 667px){
 	.ui-datepicker {
-		width: 30%;
+		width: 28.3%;
 	}
+}
+@media (max-width:640px){
 }
 @media only screen and (max-width: 640px) and (min-width: 480px) {
 	.ui-datepicker .ui-datepicker-header {
@@ -581,9 +580,19 @@ body .ui-tooltip { border-width: 2px; }
 		font-size: 1em;
 	}
 }
+@media (max-width: 600px){
+	.ui-datepicker {
+		width: 37%;
+	}
+}
+@media (max-width: 568px){
+	.ui-datepicker {
+		width: 37.2%;
+	}
+}
 @media (max-width:480px){
 	.ui-datepicker {
-		width: 87.5%;
+		width:85.3%;
 	}
 }
 @media only screen and (max-width: 480px) and (min-width: 320px) {
@@ -604,16 +613,24 @@ body .ui-tooltip { border-width: 2px; }
 }
 @media (max-width: 414px){
 	.ui-datepicker {
-		width: 92.5%;
+		width:74.7%;
+	}
+	.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next {
+		top: 10px;
 	}
 }
 @media (max-width:384px){
 	.ui-datepicker {
-		width: 91.5%;
+		width:75%;
+	}
+}
+@media (max-width: 375px){
+	.ui-datepicker {
+		width:74.8%;
 	}
 }
 @media only screen and (max-width: 320px) and (min-width: 240px) {
 	.ui-datepicker {
-		width:90%;
+		width:75%;
 	}
 }

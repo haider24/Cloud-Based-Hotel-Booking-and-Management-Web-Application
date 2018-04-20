@@ -1898,7 +1898,7 @@ h3.tittle-two{
     font-family: 'Oleo Script', cursive;
 	}
 	.search {
-    position:none;
+    position:inherit;
     background: rgba(226, 81, 17, 0.78);
     padding: 2px 10px;
     float: right;

@@ -29,18 +29,18 @@
 	width: 13px;
 	height: 17px;
 }
-/*.owl-next{*/
-	/*background: url(../images/pagnate.png) no-repeat -10px 0px;*/
-	/*position: absolute;*/
-	/*right: 2%;*/
-	/*top: 95%;*/
-/*}*/
-/*.owl-prev{*/
-	/*background: url(../images/pagnate.png) no-repeat 0px 0px;*/
-	/*position: absolute;*/
-	/*right: 3%;*/
-	/*top: 95%;*/
-/*}*/
+.owl-next{
+	background: url(../images/pagnate.png) no-repeat -10px 0px;
+	position: absolute;
+	right: 2%;
+	top: 95%;
+}
+.owl-prev{
+	background: url(../images/pagnate.png) no-repeat 0px 0px;
+	position: absolute;
+	right: 3%;
+	top: 95%;
+}
 /* Clickable class fix problem with hover on touch devices */
 /* Use it for non-touch hover action */
 .owl-theme .owl-controls.clickable .owl-buttons div:hover{

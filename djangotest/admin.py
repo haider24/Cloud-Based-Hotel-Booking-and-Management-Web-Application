@@ -22,7 +22,7 @@ class CustomerAdmin(admin.ModelAdmin):
         return False
 
 class RoomAdmin(admin.ModelAdmin):
-    list_display = ('type', 'price','image1Thumbnail','image2Thumbnail','image3Thumbnail','image4Thumbnail')
+    list_display = ('type', 'price')
 
 
 

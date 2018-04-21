@@ -18,3 +18,7 @@ def index(request):
     # but this time passing the context and request
     return HttpResponse(template.render(context, request))
 # Create your views here.
+
+def loginpage(request):
+    template=loader.get_template('login.html')
+    return HttpResponse(template.render())

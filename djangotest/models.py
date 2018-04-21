@@ -2,6 +2,8 @@ from django.db import models
 from django.db.models.signals import pre_delete
 from cloudinary.models import CloudinaryField
 import cloudinary
+from django.core.validators import MinValueValidator
+
 
 # Create your models here.
 from django.dispatch import receiver
@@ -27,7 +29,7 @@ class RoomType(models.Model):
 class Room(models.Model):
     id = models.AutoField(primary_key=True)
     type = models.ForeignKey(RoomType,on_delete=models.CASCADE)
-    price= models.PositiveIntegerField()
+    price= models.PositiveIntegerField(validators=[MinValueValidator(1)])
     image1 = CloudinaryField('image',default=None,blank=True,null=True)
     image2 = CloudinaryField('image',default=None,blank=True,null=True)
     image3 = CloudinaryField('image',default=None,blank=True,null=True)

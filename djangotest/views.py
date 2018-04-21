@@ -27,3 +27,5 @@ def createAccount(request):
         newCustomer = data.save()
         template = loader.get_template('test.html')
         return HttpResponse(template.render())
+    template = loader.get_template('test.html')
+    return HttpResponse(template.render())

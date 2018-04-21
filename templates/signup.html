@@ -63,7 +63,7 @@
 
     function PreviewImage() {
         var oFReader = new FileReader();
-        oFReader.readAsDataURL(document.getElementById({{ "form.profilePicture.id_for_label" }}).files[0]);
+        oFReader.readAsDataURL(document.getElementById("{{ form.profilePicture.id_for_label }}").files[0]);
 
         oFReader.onload = function (oFREvent) {
             document.getElementById("profile").src = oFREvent.target.result;

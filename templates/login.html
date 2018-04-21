@@ -1,10 +1,55 @@
+{% load static %}
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Article-List.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Features-Blue.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Footer-Clean.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Footer-Dark.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Login-Form-Dark.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Navigation-with-Button1.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Registration-Form-with-Photo.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
 </head>
+
 <body>
-<h1>Login</h1>
+    <nav class="navbar navbar-default navigation-clean-button" style="background-color:#4f86c3;">
+        <div class="container">
+            <div class="navbar-header"><a class="navbar-brand navbar-link" href="#" style="color:#ffffff;">Cloud Hotel</a>
+                <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+            </div>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav">
+                    <li class="active" role="presentation"><a href="#" style="color:#ffffff;">Home </a></li>
+                </ul>
+                <p class="navbar-text navbar-right actions"> <a class="btn btn-default action-button" role="button" href="#">Sign Up</a></p>
+            </div>
+        </div>
+    </nav>
+    <div class="login-dark" style="background-image:url(&quot;assets/img/hotelbackground.jpg&quot;);">
+        <form method="post">
+            <h2 class="sr-only">Login Form</h2>
+            <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
+            <div class="form-group">
+                <input class="form-control" type="email" name="email" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="password" name="password" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary btn-block" type="submit">Log In</button>
+            </div><a href="#" class="forgot">Forgot your email or password?</a></form>
+    </div>
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/myjs.js' %}"></script>
 </body>
+
 </html>

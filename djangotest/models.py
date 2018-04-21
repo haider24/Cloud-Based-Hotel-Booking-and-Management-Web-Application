@@ -34,10 +34,8 @@ class Room(models.Model):
     image4 = CloudinaryField('image',default=None,blank=True)
 
 
-
-
     def __str__(self):
-        return self.type
+        return str(self.type)
 
 @receiver(pre_delete, sender=Room)
 def photo_delete(sender, instance, **kwargs):

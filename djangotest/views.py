@@ -15,7 +15,7 @@ def loginpage(request):
     return HttpResponse(template.render())
 
 def signuppage(request):
-    if request.method is 'POST':
+    if request.method == "POST":
         data = CustomerForm(request.POST)
         newCustomer = data.save()
         template = loader.get_template('test.html')

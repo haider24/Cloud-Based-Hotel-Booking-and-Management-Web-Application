@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.forms import ModelForm
 from django import forms
 
-from djangotest.models import Customer,Room
+from djangotest.models import Customer,Room,RoomTypes
 
 # Register your models here.
 
@@ -28,3 +28,4 @@ class RoomAdmin(admin.ModelAdmin):
 
 admin.site.register(Customer,CustomerAdmin)
 admin.site.register(Room,RoomAdmin)
+admin.site.register(RoomTypes)

@@ -9,6 +9,7 @@ from django.utils.safestring import mark_safe
 
 
 class Customer(models.Model):
+    id = models.AutoField(primary_key=True)
     name=models.CharField(max_length=100)
     email=models.EmailField()
     password=models.CharField(max_length=50)
@@ -18,8 +19,14 @@ class Customer(models.Model):
         return self.name
 
 
+class RoomTypes(models.Model):
+    type=models.CharField(max_length=100)
+    def __str__(self):
+        return self.type
+
 class Room(models.Model):
-    type = models.CharField(max_length=100)
+    id = models.AutoField(primary_key=True)
+    type = models.ForeignKey(RoomTypes,on_delete='CASCADE')
     price= models.IntegerField()
     image1 = CloudinaryField('image',default=None)
     image2 = CloudinaryField('image',default=None)
@@ -38,3 +45,6 @@ def photo_delete(sender, instance, **kwargs):
         cloudinary.uploader.destroy(instance.image2.public_id)
         cloudinary.uploader.destroy(instance.image3.public_id)
         cloudinary.uploader.destroy(instance.image4.public_id)
+
+
+

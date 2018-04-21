@@ -12,10 +12,10 @@ from django.utils.safestring import mark_safe
 
 class Customer(models.Model):
     id = models.AutoField(primary_key=True)
-    name=models.CharField(max_length=100)
-    email=models.EmailField()
-    password=models.CharField(max_length=50)
-    profilePicture=models.CharField(max_length=500)
+    name=models.CharField(max_length=100,verbose_name='Name')
+    email=models.EmailField(verbose_name='Email')
+    password=models.CharField(max_length=50,verbose_name='Password')
+    profilePicture=CloudinaryField('image',default=None,blank=True,null=True)
 
     def __str__(self):
         return self.name

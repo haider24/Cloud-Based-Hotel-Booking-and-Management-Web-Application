@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.forms import ModelForm
 from django import forms
 
-from djangotest.models import Customer,Room,RoomTypes
+from djangotest.models import Customer,Room,RoomType
 
 # Register your models here.
 
@@ -16,16 +16,16 @@ from djangotest.models import Customer,Room,RoomTypes
 #         }
 
 class CustomerAdmin(admin.ModelAdmin):
-    list_display = ('name', 'email')
+    list_display = ('id','name', 'email')
     list_display_links = None
     def has_add_permission(self, request):
         return False
 
 class RoomAdmin(admin.ModelAdmin):
-    list_display = ('type', 'price')
+    list_display = ('id','type', 'price')
 
 
 
 admin.site.register(Customer,CustomerAdmin)
 admin.site.register(Room,RoomAdmin)
-admin.site.register(RoomTypes)
+admin.site.register(RoomType)

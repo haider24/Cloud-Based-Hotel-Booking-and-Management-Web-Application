@@ -36,7 +36,7 @@
     <div class="register-photo">
         <div class="form-container">
             <div class="image-holder" style="background-image:url(&quot;assets/img/hotel1.jpg&quot;);"></div>
-            <form method="POST">
+            <form method="POST" enctype='multipart/form-data'>
                 {% csrf_token %}
                 <h2 class="text-center"><strong>Create</strong> an account.</h2>
                 <h4 style="text-align:center;">Profile Picture</h4>

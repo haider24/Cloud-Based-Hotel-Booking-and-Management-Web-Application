@@ -28,10 +28,10 @@ class Room(models.Model):
     id = models.AutoField(primary_key=True)
     type = models.ForeignKey(RoomType,on_delete=models.CASCADE)
     price= models.PositiveIntegerField()
-    image1 = CloudinaryField('image',default=None,blank=True)
-    image2 = CloudinaryField('image',default=None,blank=True)
-    image3 = CloudinaryField('image',default=None,blank=True)
-    image4 = CloudinaryField('image',default=None,blank=True)
+    image1 = CloudinaryField('image',default=None,blank=True,null=True)
+    image2 = CloudinaryField('image',default=None,blank=True,null=True)
+    image3 = CloudinaryField('image',default=None,blank=True,null=True)
+    image4 = CloudinaryField('image',default=None,blank=True,null=True)
 
 
     def __str__(self):

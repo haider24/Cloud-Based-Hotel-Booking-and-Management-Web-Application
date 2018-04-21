@@ -41,8 +41,16 @@
                 <h2 class="text-center"><strong>Create</strong> an account.</h2>
                 <h4 style="text-align:center;">Profile Picture</h4>
 				<img src="{% static 'assets/img/profile.png' %}" id="profile" style="margin-left:auto;margin-right:auto;display:block;width:150px;height:150px;">
-{#                <input type="file" accept="image/*" id="{{ form.profilePicture.id_for_label }}" name="{{ form.profilePicture.name }}" onchange="PreviewImage();">#}
-                {{ form }}
+                <input type="file" accept="image/*" id="{{ form.profilePicture.id_for_label }}" name="{{ form.profilePicture.name }}" onchange="PreviewImage();">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="{{ form.name.name}}" id="{{ form.name.id_for_label }}" placeholder="Name" required>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="email" name="{{ form.email.name}}" id="{{ form.email.id_for_label }}" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="password" name="{{ form.password.name}}" id="{{ form.password.id_for_label }}" placeholder="Password" required>
+                </div>
                 <div class="form-group">
                     <button class="btn btn-primary btn-block" type="submit" style="background-color:rgb(86,198,198);">Sign Up</button>
                 </div><a href="#" class="already">You already have an account? Login here.</a></form>
@@ -53,9 +61,14 @@
     <script src="{% static 'assets/js/myjs.js' %}"></script>
 <script type="text/javascript">
 
+    function PreviewImage() {
+        var oFReader = new FileReader();
+        oFReader.readAsDataURL(document.getElementById("inputimage").files[0]);
 
-
-</script>
+        oFReader.onload = function (oFREvent) {
+            document.getElementById("{{ form.profilePicture.id_for_label }}").src = oFREvent.target.result;
+        };
+    };
 </body>
 
 </html>

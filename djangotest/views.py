@@ -15,13 +15,13 @@ def loginpage(request):
     return HttpResponse(template.render())
 
 def signuppage(request):
-    if request.GET:
+    if request.method is 'GET':
         template = loader.get_template('signup.html')
         form = CustomerForm()
         context = {}
         context['form'] = form
         return HttpResponse(template.render(context, request))
-    elif request.POST:
+    elif request.method is 'POST':
         data = CustomerForm(request.POST)
         newCustomer = data.save()
         template = loader.get_template('test.html')

@@ -26,7 +26,7 @@ class RoomTypes(models.Model):
 
 class Room(models.Model):
     id = models.AutoField(primary_key=True)
-    type = models.ForeignKey(RoomTypes,on_delete=models.CASCADE())
+    type = models.ForeignKey(RoomTypes,on_delete=models.CASCADE)
     price= models.IntegerField()
     image1 = CloudinaryField('image',default=None)
     image2 = CloudinaryField('image',default=None)

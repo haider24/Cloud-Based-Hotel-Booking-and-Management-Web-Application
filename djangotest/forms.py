@@ -5,4 +5,4 @@ from djangotest.models import Customer
 class CustomerForm(ModelForm):
     class Meta:
         model = Customer
-        fields = ['profilePicture','name', 'email', 'password']
+        fields = '__all__'

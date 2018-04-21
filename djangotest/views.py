@@ -19,7 +19,9 @@ def signuppage(request):
         data = CustomerForm(request.POST,request.FILES)
         newCustomer = data.save()
         template = loader.get_template('test.html')
-        return HttpResponse(template.render())
+        context={}
+        context['form']=data
+        return HttpResponse(template.render(context,request))
 
     template = loader.get_template('signup.html')
     form = CustomerForm()

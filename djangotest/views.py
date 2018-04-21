@@ -20,3 +20,9 @@ def signuppage(request):
     context = {}
     context['form'] = form
     return HttpResponse(template.render(context,request))
+
+def createAccount(request):
+    data = CustomerForm(request.POST)
+    newCustomer=data.save()
+    template = loader.get_template('test.html')
+    return HttpResponse(template.render())

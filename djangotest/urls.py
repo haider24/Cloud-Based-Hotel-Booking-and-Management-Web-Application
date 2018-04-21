@@ -25,6 +25,6 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^login/',views.loginpage,name='login'),
     url(r'^signup/',views.signuppage,name='signup'),
-    #url(r'^signup/',views.signuppage,name='signup'),
+    url(r'^createaccount/',views.createAccount,name='createaccount'),
 
 ]

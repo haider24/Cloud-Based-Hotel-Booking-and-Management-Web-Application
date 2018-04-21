@@ -30,13 +30,13 @@
 	height: 17px;
 }
 .owl-next{
-	/*background: url(../images/pagnate.png) no-repeat -10px 0px;*/
+
 	position: absolute;
 	right: 2%;
 	top: 95%;
 }
 .owl-prev{
-	/*background: url(../images/pagnate.png) no-repeat 0px 0px;*/
+
 	position: absolute;
 	right: 3%;
 	top: 95%;
@@ -91,7 +91,7 @@
 /* preloading images */
 .owl-item.loading{
 	min-height: 150px;
-	/*background: url(AjaxLoader.gif) no-repeat center center*/
+
 }
 /* 
  * 	Core Owl Carousel CSS File
@@ -152,7 +152,7 @@
 
 /* mouse grab icon */
 .grabbing { 
-    /*cursor:url(grabbing.png) 8 8, move;*/
+
 }
 
 /* fix */

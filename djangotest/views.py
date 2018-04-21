@@ -19,4 +19,4 @@ def signuppage(request):
     form = CustomerForm()
     context = {}
     context['form'] = form
-    return HttpResponse(template.render(request, context))
+    return HttpResponse(template.render(context,request))

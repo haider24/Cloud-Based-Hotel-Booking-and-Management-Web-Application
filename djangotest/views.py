@@ -15,11 +15,17 @@ def loginpage(request):
     return HttpResponse(template.render())
 
 def signuppage(request):
-    template = loader.get_template('signup.html')
-    form = CustomerForm()
-    context = {}
-    context['form'] = form
-    return HttpResponse(template.render(context,request))
+    if request.GET:
+        template = loader.get_template('signup.html')
+        form = CustomerForm()
+        context = {}
+        context['form'] = form
+        return HttpResponse(template.render(context, request))
+    elif request.POST:
+        data = CustomerForm(request.POST)
+        newCustomer = data.save()
+        template = loader.get_template('test.html')
+        return HttpResponse(template.render())
 
 def createAccount(request):
     if request.POST:

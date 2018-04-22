@@ -40,7 +40,7 @@
             <h3>Share your experience with others</h3>
             <form method="post" id="commentform">
                 {% csrf_token %}
-                <textarea class="form-control" form="commentform" name="comment" style="height:90px;"></textarea>
+                <textarea class="form-control" style="resize:none" form="commentform" name="comment" style="height:90px;"></textarea>
                 <button class="btn btn-default" type="submit">Submit Comment</button>
             </form>
         </div>

@@ -54,3 +54,9 @@ class Comment(models.Model):
 
     def _str_(self):
         return str(self.comment)
+
+    def customername(self):
+        return self.customer.name
+
+    def customeremail(self):
+        return self.customer.email

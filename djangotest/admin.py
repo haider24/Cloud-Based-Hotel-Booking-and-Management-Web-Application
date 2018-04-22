@@ -25,7 +25,7 @@ class RoomAdmin(admin.ModelAdmin):
     list_display = ('id','type', 'price')
 
 class CommentAdmin(admin.ModelAdmin):
-    list_display =('comment','customer')
+    list_display =('comment','customername','customeremail')
 
 
 admin.site.register(Customer,CustomerAdmin)

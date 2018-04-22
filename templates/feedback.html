@@ -35,7 +35,7 @@
             </div>
         </div>
     </nav>
-    <div style="text-align:center;padding:40px;background:url(&quot;static/assets/img/plane.jpg&quot;)no-repeat;background-size:cover;">
+    <div style="text-align:center;padding:40px;background:url(..assets/img/plane.jpg;)no-repeat;background-size:cover;">
         <div class="jumbotron" style="border-radius:20px;padding:40px;background:rgba(255,255,255,0.75);margin:auto;width:450px;height:auto;">
             <h3>Share your experience with others</h3>
             <form method="post" id="commentform">
@@ -53,14 +53,14 @@
                         <tr>
                             <td style="width:100px;height:100px;">
                                 {% if comment.customer.profilePicture == null %}
-                                   <img src="{% static 'assets/img/profile.png' %}" style="width:150px;height:150px;margin:auto;display:block;">
+                                   <img src="{% static 'assets/img/profile.png' %}" style="width:100px;height:100px;margin:auto;display:block;">
                                 {% else %}
-                                    <img src="{{ comment.customer.profilePicture.url }}" style="width:150px;height:150px;margin:auto;display:block;">
+                                    <img src="{{ comment.customer.profilePicture.url }}" style="width:100px;height:100px;margin:auto;display:block;">
                                 {% endif %}
                             </td>
                             <td style="text-align:left;padding:0px;margin:0px;height:100px;">
-                                <h3 style="margin:0px;">{{ comment.customer.name }} </h3>
-                                <p style="font-size:14px;">{{ comment.comment }}</p>
+                                <h2 style="margin:0px;">{{ comment.customer.name }} </h2>
+                                <p style="font-size:12px;">{{ comment.comment }}</p>
                             </td>
                         </tr>
                     {% endfor %}

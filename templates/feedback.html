@@ -35,7 +35,7 @@
             </div>
         </div>
     </nav>
-    <div style="text-align:center;padding:40px;background:url(&quot;assets/img/plane.jpg&quot;)no-repeat;background-size:cover;">
+    <div style="text-align:center;padding:40px;background:url(&quot;static/assets/img/plane.jpg&quot;)no-repeat;background-size:cover;">
         <div class="jumbotron" style="border-radius:20px;padding:40px;background:rgba(255,255,255,0.75);margin:auto;width:450px;height:auto;">
             <h3>Share your experience with others</h3>
             <form method="post" id="commentform">
@@ -52,8 +52,7 @@
                     {% for comment in comments %}
                         <tr>
                             <td style="width:100px;height:100px;">
-                                <img src="assets/img/profile.png" style="width:100px;height:100px;margin:0px;display:block;">
-                                {% if comment.customer.profilePicture is null %}
+                                {% if comment.customer.profilePicture == null %}
                                    <img src="{% static 'assets/img/profile.png' %}" style="width:150px;height:150px;margin:auto;display:block;">
                                 {% else %}
                                     <img src="{{ comment.customer.profilePicture.url }}" style="width:150px;height:150px;margin:auto;display:block;">

@@ -35,6 +35,7 @@
     </nav>
     <div class="login-dark" style="background-image:url(&quot;assets/img/hotelbackground.jpg&quot;);">
         <form method="post">
+            {% csrf_token %}
             <h2 class="sr-only">Login Form</h2>
             <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
             <div class="form-group">

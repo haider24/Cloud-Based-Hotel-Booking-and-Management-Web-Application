@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>homepage</title>
+    <title>Feedback</title>
     <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/fonts/ionicons.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/Article-List.css' %}">
@@ -35,7 +35,7 @@
             </div>
         </div>
     </nav>
-    <div style="text-align:center;padding:40px;background:url(&quot;/static/assets/img/plane.jpg&quot;)no-repeat;background-size:cover;">
+    <div style="text-align:center;padding:40px;background:url(&quot;/static/assets/img/hotel3.jpg&quot;)no-repeat;background-size:cover;">
         <div class="jumbotron" style="border-radius:20px;padding:40px;background:rgba(255,255,255,0.75);margin:auto;width:450px;height:auto;">
             <h3>Share your experience with others</h3>
             <form method="post" id="commentform">
@@ -60,7 +60,7 @@
                             </td>
                             <td style="text-align:left;padding:0px;margin:0px;height:100px;">
                                 <h2 style="margin:0px;">{{ comment.customer.name }} </h2>
-                                <p style="font-size:12px;">{{ comment.comment }}</p>
+                                <p style="font-size:13px;">{{ comment.comment }}</p>
                             </td>
                         </tr>
                     {% endfor %}

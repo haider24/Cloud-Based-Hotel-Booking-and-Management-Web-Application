@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.template import loader
 from djangotest.forms import CustomerForm
 from djangotest.models import Customer
+from django.template.defaulttags import csrf_token
 
 
 def index(request):
@@ -11,6 +12,7 @@ def index(request):
     return HttpResponse(template.render())
 # Create your views here.
 
+@csrf_token
 def login(request):
     if request.method == "POST":
         userEmail=request.POST.get('email')

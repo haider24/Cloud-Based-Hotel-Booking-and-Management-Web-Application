@@ -1,0 +1,81 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+     <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Article-List.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Features-Blue.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Footer-Clean.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Footer-Dark.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Login-Form-Dark.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Navigation-with-Button1.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Registration-Form-with-Photo.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+</head>
+
+<body>
+    <nav class="navbar navbar-default navigation-clean-button" style="background-color:#4f86c3;">
+        <div class="container">
+            <div class="navbar-header"><a class="navbar-brand navbar-link" href="#" style="color:#ffffff;">Cloud Hotel</a>
+                <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+            </div>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav">
+                    <li role="presentation"><a href="#" style="color:#ffffff;"><strong>H</strong>ome </a></li>
+                    <li role="presentation"><a href="#" style="color:#ffffff;"><strong>F</strong>eedback </a></li>
+                </ul>
+                <p class="navbar-text navbar-right actions">
+                    <a class="btn"  style="color:#ffffff;">{{ user.name }}</a>
+                </p>
+            </div>
+        </div>
+    </nav>
+    <div style="text-align:center;padding:40px;background:url(&quot;assets/img/plane.jpg&quot;)no-repeat;background-size:cover;">
+        <div class="jumbotron" style="border-radius:20px;padding:40px;background:rgba(255,255,255,0.75);text-align:center;position:relative;width:400px;height:auto;margin:auto;">
+            {% if user.profilePicture is null %}
+               <img src="{% static 'assets/img/profile.png' %}" style="width:150px;height:150px;margin:auto;display:block;">
+            {% else %}
+                <img src="{{ user.profilePicture.url }}" style="width:150px;height:150px;margin:auto;display:block;">
+            {% endif %}
+
+            <h2>{{ user.name }} </h2>
+            <h3>{{ user.email }} </h3>
+            <button class="btn btn-default" type="button">Edit Profile</button>
+        </div>
+    </div>
+    <div class="footer-dark" style="background-color:#4f86c3;">
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-push-6 item text">
+                        <h3>About the Company</h3>
+                        <p>Praesent sed lobortis mi. Suspendisse vel placerat ligula. Vivamus ac sem lacus. Ut vehicula rhoncus elementum. Etiam quis tristique lectus. Aliquam in arcu eget velit pulvinar dictum vel in justo.</p>
+                    </div>
+                    <div class="col-md-3 col-md-pull-6 col-sm-4 item">
+                        <ul>
+                            <li><i class="glyphicon glyphicon-earphone" style="width:30px;"></i>
+                                <label>111 555 666</label>
+                            </li>
+                            <li><i class="glyphicon glyphicon-envelope" style="width:30px;"></i>
+                                <label>111 555 666</label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-12 col-sm-4 item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
+                </div>
+                <p class="copyright">Company Name © 2016</p>
+            </div>
+        </footer>
+    </div>
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/myjs.js' %}"></script>
+</body>
+
+</html>

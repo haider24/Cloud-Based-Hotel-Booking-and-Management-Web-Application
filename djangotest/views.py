@@ -21,7 +21,7 @@ def login(request):
             return render(request,'failed.html')
         else:
             context={'user':user}
-            return render(request, 'test.html', context)
+            return render(request, 'profile.html', context)
 
     return render(request,'login.html')
 

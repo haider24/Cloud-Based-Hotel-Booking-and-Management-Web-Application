@@ -6,9 +6,7 @@ from djangotest.models import Customer
 
 
 def index(request):
-    template = loader.get_template('homepage.html')
-
-    return HttpResponse(template.render())
+     return render(request,'homepage.html')
 # Create your views here.
 
 def login(request):
@@ -20,29 +18,21 @@ def login(request):
         except Customer.DoesNotExist:
             user=None
         if user == None:
-            template = loader.get_template('failed.html')
-            return HttpResponse(template.render())
+            return render(request,'failed.html')
         else:
-            template = loader.get_template('test.html')
-            context={}
-            context['user']=user
+            context={'user':user}
             return render(request, 'test.html', context)
-            #return HttpResponse(template.render(context,request))
 
-    template=loader.get_template('login.html')
-    return HttpResponse(template.render())
+        return render(request,'login.html')
+
 
 def signup(request):
     if request.method == "POST":
         data = CustomerForm(request.POST,request.FILES)
         newCustomer = data.save()
-        template = loader.get_template('test.html')
-        context={}
-        context['form']=data
-        return HttpResponse(template.render(context,request))
+        context={'form':data}
+        return render(request,'test.html',context)
 
-    template = loader.get_template('signup.html')
     form = CustomerForm()
-    context = {}
-    context['form'] = form
-    return HttpResponse(template.render(context, request))
+    context = {'form':form}
+    return render(request,'signup.html',context)

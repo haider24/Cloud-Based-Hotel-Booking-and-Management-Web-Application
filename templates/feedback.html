@@ -1,13 +1,12 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile</title>
-     <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <title>homepage</title>
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/fonts/ionicons.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/Article-List.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/Features-Blue.css' %}">
@@ -28,7 +27,7 @@
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav">
                     <li role="presentation"><a href="#" style="color:#ffffff;"><strong>H</strong>ome </a></li>
-                    <li role="presentation"><a href="/feedback" style="color:#ffffff;"><strong>F</strong>eedback </a></li>
+                    <li role="presentation"><a href="#" style="color:#ffffff;">Profile </a></li>
                 </ul>
                 <p class="navbar-text navbar-right actions">
                     <a class="btn"  style="color:#ffffff;">{{ user.name }}</a>
@@ -37,16 +36,32 @@
         </div>
     </nav>
     <div style="text-align:center;padding:40px;background:url(&quot;assets/img/plane.jpg&quot;)no-repeat;background-size:cover;">
-        <div class="jumbotron" style="border-radius:20px;padding:40px;background:rgba(255,255,255,0.75);text-align:center;position:relative;width:400px;height:auto;margin:auto;">
-            {% if user.profilePicture is null %}
-               <img src="{% static 'assets/img/profile.png' %}" style="width:150px;height:150px;margin:auto;display:block;">
-            {% else %}
-                <img src="{{ user.profilePicture.url }}" style="width:150px;height:150px;margin:auto;display:block;">
-            {% endif %}
-
-            <h2>{{ user.name }} </h2>
-            <h3>{{ user.email }} </h3>
-            <button class="btn btn-default" type="button">Edit Profile</button>
+        <div class="jumbotron" style="border-radius:20px;padding:40px;background:rgba(255,255,255,0.75);margin:auto;width:450px;height:auto;">
+            <h3>Share your experience with others</h3>
+            <form method="post" id="commentform">
+                {% csrf_token %}
+                <textarea class="form-control" form="commentform" name="comment" style="height:90px;"></textarea>
+                <button class="btn btn-default" type="submit">Submit Comment</button>
+            </form>
+        </div>
+        <div class="jumbotron" style="border-radius:20px;padding:10px;background:rgba(255,255,255,0.75);margin-top:100px;margin-left:auto;text-align:center;position:relative;margin-right:auto;height:auto;width:auto;">
+            <h2>What others have to say about us</h2>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="width:100px;height:100px;"><img src="assets/img/profile.png" style="width:100px;height:100px;margin:0px;display:block;"></td>
+                            <td style="text-align:left;padding:0px;margin:0px;height:100px;">
+                                <h3 style="margin:0px;">Name </h3>
+                                <p style="font-size:14px;">I love this hotel soooooo much</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     <div class="footer-dark" style="background-color:#4f86c3;">

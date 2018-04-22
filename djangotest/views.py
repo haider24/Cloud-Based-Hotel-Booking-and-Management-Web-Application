@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader, RequestContext
 from djangotest.forms import CustomerForm
-from djangotest.models import Customer
+from djangotest.models import Customer,Comment
 
 
 def index(request):
@@ -21,6 +21,7 @@ def login(request):
             return render(request,'failed.html')
         else:
             context={'user':user}
+            request.session['userid']=user.id
             return render(request, 'profile.html', context)
 
     return render(request,'login.html')
@@ -36,3 +37,13 @@ def signup(request):
     form = CustomerForm()
     context = {'form':form}
     return render(request,'signup.html',context)
+
+def feedback(request):
+    if request.method == "POST":
+        customerid=request.session['userid']
+        customerComment=request.POST.get('comment')
+        user=Customer.objects.get(id=customerid)
+        comment=Comment(comment=customerComment,customer=user)
+        comment.save()
+        return render(request,'feedback.html')
+    return render(request,'feedback.html')

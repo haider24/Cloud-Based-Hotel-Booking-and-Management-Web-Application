@@ -28,7 +28,6 @@ def login(request):
             context['user']=user
             return HttpResponse(template.render(context,request))
 
-
     template=loader.get_template('login.html')
     return HttpResponse(template.render())
 

@@ -48,3 +48,9 @@ def photo_delete(sender, instance, **kwargs):
 
 
 
+class Comment(models.Model):
+    comment=models.CharField(max_length=200)
+    customer=models.ForeignKey(Customer,on_delete=models.CASCADE)
+
+    def _str_(self):
+        return str(self.comment)

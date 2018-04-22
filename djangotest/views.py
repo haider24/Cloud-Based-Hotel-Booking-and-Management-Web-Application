@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.template import loader
+from django.template import loader, RequestContext
 from djangotest.forms import CustomerForm
 from djangotest.models import Customer
 
@@ -26,7 +26,8 @@ def login(request):
             template = loader.get_template('test.html')
             context={}
             context['user']=user
-            return HttpResponse(template.render(context,request))
+            return render('contact_form.html', user,context_instance=RequestContext(request))
+            #return HttpResponse(template.render(context,request))
 
     template=loader.get_template('login.html')
     return HttpResponse(template.render())

@@ -23,7 +23,7 @@ def login(request):
             context={'user':user}
             return render(request, 'test.html', context)
 
-        return render(request,'login.html')
+    return render(request,'login.html')
 
 
 def signup(request):

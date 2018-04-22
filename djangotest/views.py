@@ -11,7 +11,7 @@ def index(request):
     return HttpResponse(template.render())
 # Create your views here.
 
-def login(request):
+def loginpage(request):
     if request.method == "POST":
         userEmail=request.POST.get('email')
         userPassword=request.POST.get('password')
@@ -26,8 +26,7 @@ def login(request):
             template = loader.get_template('test.html')
             context={}
             context['user']=user
-            return render('test.html', user,context_instance=RequestContext(request))
-            #return HttpResponse(template.render(context,request))
+            return HttpResponse(template.render(context,request))
 
     template=loader.get_template('login.html')
     return HttpResponse(template.render())

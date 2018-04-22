@@ -13,15 +13,15 @@ def index(request):
 
 def login(request):
     if request.method == "POST":
-        userEmail=request.GET.get('email')
-        userPassword=request.GET.get('password')
+        userEmail=request.POST.get('email')
+        userPassword=request.POST.get('password')
         try:
             user = Customer.objects.get(email=userEmail,password=userPassword)
         except Customer.DoesNotExist:
             user=None
         if user == None:
             template = loader.get_template('failed.html')
-            return HttpResponse(template.render(request))
+            return HttpResponse(template.render())
         else:
             template = loader.get_template('test.html')
             context={}

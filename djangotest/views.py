@@ -21,7 +21,7 @@ def login(request):
             user=None
         if user == None:
             template = loader.get_template('failed.html')
-            return HttpResponse(template.render())
+            return HttpResponse(template.render(request))
         else:
             template = loader.get_template('test.html')
             context={}

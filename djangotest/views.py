@@ -45,5 +45,15 @@ def feedback(request):
         user=Customer.objects.get(id=customerid)
         comment=Comment(comment=customerComment,customer=user)
         comment.save()
+        allComments=getComments()
+        context={'comments':allComments,'user':user}
         return render(request,'feedback.html')
+    allComments=getComments()
+    customerid = request.session['userid']
+    user=Customer.objects.get(id=customerid)
+    context = {'comments': allComments, 'user': user}
     return render(request,'feedback.html')
+
+def getComments():
+    comments=Comment.objects.all()
+    return comments

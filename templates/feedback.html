@@ -48,17 +48,24 @@
             <h2>What others have to say about us</h2>
             <div class="table-responsive">
                 <table class="table">
-                    <thead>
-                        <tr></tr>
-                    </thead>
                     <tbody>
+                    {% for comment in comments %}
                         <tr>
-                            <td style="width:100px;height:100px;"><img src="assets/img/profile.png" style="width:100px;height:100px;margin:0px;display:block;"></td>
+                            <td style="width:100px;height:100px;">
+                                <img src="assets/img/profile.png" style="width:100px;height:100px;margin:0px;display:block;">
+                                {% if comment.customer.profilePicture is null %}
+                                   <img src="{% static 'assets/img/profile.png' %}" style="width:150px;height:150px;margin:auto;display:block;">
+                                {% else %}
+                                    <img src="{{ comment.customer.profilePicture.url }}" style="width:150px;height:150px;margin:auto;display:block;">
+                                {% endif %}
+                            </td>
                             <td style="text-align:left;padding:0px;margin:0px;height:100px;">
-                                <h3 style="margin:0px;">Name </h3>
-                                <p style="font-size:14px;">I love this hotel soooooo much</p>
+                                <h3 style="margin:0px;">{{ comment.customer.name }} </h3>
+                                <p style="font-size:14px;">{{ comment.comment }}</p>
                             </td>
                         </tr>
+                    {% endfor %}
+
                     </tbody>
                 </table>
             </div>

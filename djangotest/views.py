@@ -11,7 +11,7 @@ def index(request):
     return HttpResponse(template.render())
 # Create your views here.
 
-def loginpage(request):
+def login(request):
     if request.method == "POST":
         userEmail=request.POST.get('email')
         userPassword=request.POST.get('password')

@@ -50,7 +50,7 @@
                 <table class="table">
                     <tbody>
                     {% for comment in comments %}
-                        <tr>
+                        <tr style="background-color:#ffffff;">
                             <td style="width:100px;height:100px;">
                                 {% if comment.customer.profilePicture == null %}
                                    <img src="{% static 'assets/img/profile.png' %}" style="width:100px;height:100px;margin:auto;display:block;">

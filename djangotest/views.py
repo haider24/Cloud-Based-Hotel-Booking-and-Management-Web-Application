@@ -26,7 +26,8 @@ def login(request):
             template = loader.get_template('test.html')
             context={}
             context['user']=user
-            return HttpResponse(template.render(context,request))
+            return render(request, 'test.html', context)
+            #return HttpResponse(template.render(context,request))
 
     template=loader.get_template('login.html')
     return HttpResponse(template.render())

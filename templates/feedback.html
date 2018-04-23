@@ -101,7 +101,7 @@
 
         <div class="jumbotron" style="border-radius:20px;padding:10px;background:rgba(255,255,255,0.75);margin:auto;width:200px;height:auto;margin-top:20px;">
             <h3>Rate Us!</h3>
-            <form method="post" action="/rating">
+            <form method="post" action="/rating/">
                 {% csrf_token %}
              <div class="rating" style="margin: auto;font-size:30px;">
             <input name="rating" type="radio" value="0" hidden checked />

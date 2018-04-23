@@ -121,8 +121,8 @@
     <div class="testimonials-clean">
         <div class="container">
             <h2 class="text-center">What others have to say about us</h2>
-            {% for comment in comments %}
             <div class="row people">
+            {% for comment in comments %}
                 <div class="col-md-4 col-sm-6 item">
                     <div class="box">
                         <p class="description">{{ comment.comment }}</p>
@@ -139,8 +139,9 @@
                         <p class="title">CEO of Company Inc.</p>
                     </div>
                 </div>
-            </div>
             {% endfor %}
+            </div>
+
         </div>
     </div>
     <div class="footer-dark" style="background-color:#4f86c3;">

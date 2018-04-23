@@ -16,6 +16,59 @@
     <link rel="stylesheet" href="{% static 'assets/css/Navigation-with-Button1.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/Registration-Form-with-Photo.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+
+    <style>
+
+
+.txt-center {
+  text-align: center;
+}
+.hide {
+  display: none;
+}
+
+.clear {
+  float: none;
+  clear: both;
+}
+
+.rating {
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    text-align: center;
+    position: relative;
+}
+
+.rating > label {
+    float: right;
+    display: inline;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    width: 1.1em;
+    cursor: pointer;
+    color: #000;
+}
+
+.rating > label:hover,
+.rating > label:hover ~ label,
+.rating > input.radio-btn:checked ~ label {
+    color: transparent;
+}
+
+.rating > label:hover:before,
+.rating > label:hover ~ label:before,
+.rating > input.radio-btn:checked ~ label:before,
+.rating > input.radio-btn:checked ~ label:before {
+    content: "\2605";
+    position: absolute;
+    left: 0;
+    color: #FFD700;
+}
+
+
+
+	</style>
 </head>
 
 <body>
@@ -44,31 +97,33 @@
                 <button class="btn btn-default" type="submit">Submit Comment</button>
             </form>
         </div>
-        <div class="jumbotron" style="border-radius:20px;padding:10px;background:rgba(255,255,255,0.75);margin-top:100px;margin-left:auto;text-align:center;position:relative;margin-right:auto;height:auto;width:auto;">
-            <h2>What others have to say about us</h2>
-            <div class="table-responsive">
-                <table class="table">
-                    <tbody>
-                    {% for comment in comments %}
-                        <tr style="background-color:#ffffff;">
-                            <td style="width:100px;height:100px;">
-                                {% if comment.customer.profilePicture == null %}
-                                   <img src="{% static 'assets/img/profile.png' %}" style="width:100px;height:100px;margin:auto;display:block;">
-                                {% else %}
-                                    <img src="{{ comment.customer.profilePicture.url }}" style="width:100px;height:100px;margin:auto;display:block;">
-                                {% endif %}
-                            </td>
-                            <td style="text-align:left;padding:0px;margin:0px;height:100px;">
-                                <h2 style="margin:0px;">{{ comment.customer.name }} </h2>
-                                <p style="font-size:13px;">{{ comment.comment }}</p>
-                            </td>
-                        </tr>
-                    {% endfor %}
 
-                    </tbody>
-                </table>
+        <div class="testimonials-clean">
+        <div class="container">
+            <h2 class="text-center">What others have to say about us</h2>
+            {% for comment in comments %}
+            <div class="row people">
+                <div class="col-md-4 col-sm-6 item">
+                    <div class="box">
+                        <p class="description">{{ comment.comment }}</p>
+                    </div>
+                    <div class="author">
+
+                        {% if comment.customer.profilePicture == null %}
+                            <img class="img-circle" src="/static/assets/img/profile.png">
+                        {% else %}
+                            <img class="img-circle" src="{{ comment.customer.profilePicture.url }}">
+                        {% endif %}
+
+                        <h5 class="name">{{ comment.customer.name }}</h5>
+                        <p class="title">CEO of Company Inc.</p>
+                    </div>
+                </div>
             </div>
+            {% endfor %}
         </div>
+    </div>
+    
     </div>
     <div class="footer-dark" style="background-color:#4f86c3;">
         <footer>

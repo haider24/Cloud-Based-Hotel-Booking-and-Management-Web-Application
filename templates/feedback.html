@@ -17,10 +17,13 @@
     <link rel="stylesheet" href="{% static 'assets/css/Registration-Form-with-Photo.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
     <link rel="stylesheet" href="/static/assets/css/Testimonials.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <style>
 
-
+        .checked {
+    color: orange;
+}
 .txt-center {
   text-align: center;
 }
@@ -139,7 +142,12 @@
                         {% endif %}
 
                         <h5 class="name">{{ comment.customer.name }}</h5>
-                        <p class="title">CEO of Company Inc.</p>
+                        <p>
+                            {% for i in "x"|ljust:comment.customer.rating %}
+                                <span class="fa fa-star checked"></span>
+                            {% endfor %}
+
+                        </p>
                     </div>
                 </div>
             {% endfor %}

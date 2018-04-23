@@ -16,7 +16,7 @@ class Customer(models.Model):
     name=models.CharField(max_length=100,verbose_name='Name')
     email=models.EmailField(verbose_name='Email')
     password=models.CharField(max_length=50,verbose_name='Password')
-    rating=models.IntegerField(default=0,verbose_name='Rating',blank=True,null=True,validators=[MaxValueValidator(5), MinValueValidator(0)])
+   # rating=models.IntegerField(default=0,verbose_name='Rating',blank=True,null=True,validators=[MaxValueValidator(5), MinValueValidator(0)])
     profilePicture=CloudinaryField('image',default=None,blank=True,null=True)
 
     def __str__(self):

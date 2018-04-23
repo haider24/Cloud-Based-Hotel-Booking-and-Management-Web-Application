@@ -17,6 +17,44 @@
     <link rel="stylesheet" href="{% static 'assets/css/Navigation-with-Button1.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/Registration-Form-with-Photo.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+</style>
 </head>
 
 <body>
@@ -37,17 +75,36 @@
         </div>
     </nav>
     <div style="text-align:center;padding:40px;background:url(&quot;/static/assets/img/hotel3.jpg&quot;)no-repeat;background-size:cover;">
-        <div class="jumbotron" style="border-radius:20px;padding:40px;background:rgba(255,255,255,0.75);text-align:center;position:relative;width:400px;height:auto;margin:auto;">
-            {% if user.profilePicture is null %}
-               <img src="{% static 'assets/img/profile.png' %}" style="width:150px;height:150px;margin:auto;display:block;">
-            {% else %}
-                <img src="{{ user.profilePicture.url }}" style="width:150px;height:150px;margin:auto;display:block;">
-            {% endif %}
+        User Profile</h2>
 
-            <h2>{{ user.name }} </h2>
-            <h3>{{ user.email }} </h3>
-            <a class="btn btn-default">Edit Profile</a>
-        </div>
+<div class="card" id="prof" style="background:#ffffff">
+
+    {% if user.profilePicture is null %}
+        <img src="/static/assets/img/profile.png" alt="John" style="width:100%">
+    {% else %}
+        <img src="{{ user.profilePicture.url }}" alt="John" style="width:100%">
+    {% endif %}
+
+  <h1>{{ user.name }}</h1>
+  <p class="title">{{ user.email }}</p>
+
+ <p><button onclick="editProfile()">Edit Profile</button></p>
+</div>
+
+<div class="card" id="edit" hidden style="background:#ffffff">
+
+  <input type="image" onclick="uploadImage()" src="assets/img/profile.png" alt="John" style="width:100%">
+  <input type="file" hidden id="imageinput" style="display: none">
+  <h3><input type="text" placeholder="Name" value="John Doe"/></h3>
+  <h3><input type="Email" placeholder="Email" value="johndoe@gmail.com"/></h3>
+ <table style="width:100%">
+  <tr>
+    <td><p><a href="/test"><button>Save</button></a></p></td>
+    <td><p><button onclick="cancel()">Cancel</button></p></td>
+  </tr>
+</table>
+
+</div>
     </div>
     <div class="footer-dark" style="background-color:#4f86c3;">
         <footer>
@@ -76,6 +133,19 @@
     <script src="{% static 'assets/js/jquery.min.js' %}"></script>
     <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'assets/js/myjs.js' %}"></script>
+<script>
+function editProfile() {
+        document.getElementById("prof").hidden = true;
+		document.getElementById("edit").hidden = false;
+}
+function cancel() {
+        document.getElementById("prof").hidden = false;
+		document.getElementById("edit").hidden = true;
+}
+function uploadImage() {
+        document.getElementById("imageinput").click();
+}
+</script>
 </body>
 
 </html>

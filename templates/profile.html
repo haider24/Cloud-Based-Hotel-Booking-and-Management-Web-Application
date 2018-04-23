@@ -93,8 +93,13 @@ button:hover, a:hover {
 
 <div class="card" id="edit" hidden style="background:#ffffff">
 
-  <input type="image" onclick="uploadImage()" src="assets/img/profile.png" alt="John" style="width:100%">
-  <input type="file" hidden id="imageinput" style="display: none">
+    {% if user.profilePicture is null %}
+        <input type="image" onclick="uploadImage()" src="/static/assets/img/profile.png" alt="John" style="width:100%">
+    {% else %}
+        <input type="image" onclick="uploadImage()" src="{{ user.profilePicture.url }}" alt="John" style="width:100%">
+    {% endif %}
+
+  <input type="file" accept="image/*" hidden id="imageinput" style="display: none">
   <h3><input type="text" placeholder="Name" value="John Doe"/></h3>
   <h3><input type="Email" placeholder="Email" value="johndoe@gmail.com"/></h3>
  <table style="width:100%">

@@ -69,14 +69,14 @@ button:hover, a:hover {
         </div>
     </nav>
     <div style="text-align:center;padding:40px;background:url(&quot;/static/assets/img/hotel3.jpg&quot;)no-repeat;background-size:cover;">
-        User Profile</h2>
+        <h2>User Profile</h2>
 
 <div class="card" id="prof" style="background:#ffffff">
 
     {% if user.profilePicture is null %}
-        <img src="/static/assets/img/profile.png" alt="John" style="width:100%">
+        <img class="img-circle" src="/static/assets/img/profile.png" style="max-width:160px;" />
     {% else %}
-        <img src="{{ user.profilePicture.url }}" alt="John" style="width:100%">
+        <img class="img-circle" src="{{ user.profilePicture.url }}" style="max-width:160px;" />
     {% endif %}
 
   <h1>{{ user.name }}</h1>
@@ -88,9 +88,9 @@ button:hover, a:hover {
 <div class="card" id="edit" hidden style="background:#ffffff">
 
     {% if user.profilePicture is null %}
-        <input type="image" onclick="uploadImage()" src="/static/assets/img/profile.png" alt="John" style="width:100%">
+        <input type="image" onclick="uploadImage()" src="/static/assets/img/profile.png" style="max-width:160px;" class="img-circle">
     {% else %}
-        <input type="image" onclick="uploadImage()" src="{{ user.profilePicture.url }}" alt="John" style="width:100%">
+        <input type="image" onclick="uploadImage()" src="{{ user.profilePicture.url }}" style="max-width:160px;" class="img-circle">
     {% endif %}
 
   <input type="file" accept="image/*" hidden id="imageinput" style="display: none">

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template import loader, RequestContext
 from djangotest.forms import CustomerForm
@@ -38,6 +38,12 @@ def signup(request):
     context = {'form':form}
     return render(request,'signup.html',context)
 
+def profile(request):
+    customerid = request.session['userid']
+    user = Customer.objects.get(id=customerid)
+    context = {'user': user}
+    return render(request, 'profile.html', context)
+
 def feedback(request):
     if request.method == "POST":
         customerid=request.session['userid']
@@ -57,3 +63,12 @@ def feedback(request):
 def getComments():
     comments=Comment.objects.all()
     return comments
+
+def rating(request):
+    if request.method == "POST":
+        customerid=request.session['userid']
+        customerRating=request.POST.get('rating')
+        user=Customer.objects.get(id=customerid)
+        user.rating=customerRating
+        user.save()
+        return redirect('profile')

@@ -16,7 +16,7 @@ from djangotest.models import Customer,Room,RoomType,Comment
 #         }
 
 class CustomerAdmin(admin.ModelAdmin):
-    list_display = ('id','name', 'email','profilePicture')
+    list_display = ('id','name', 'email','profilePicture','rating')
     list_display_links = None
     def has_add_permission(self, request):
         return False

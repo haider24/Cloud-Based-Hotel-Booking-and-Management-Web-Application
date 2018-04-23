@@ -101,8 +101,10 @@
 
         <div class="jumbotron" style="border-radius:20px;padding:10px;background:rgba(255,255,255,0.75);margin:auto;width:200px;height:auto;margin-top:20px;">
             <h3>Rate Us!</h3>
-            <form>
+            <form method="post" action="/rating">
+                {% csrf_token %}
              <div class="rating" style="margin: auto;font-size:30px;">
+            <input name="rating" type="radio" value="0" class="radio-btn hide" checked />
             <input id="star5" name="rating" type="radio" value="5" class="radio-btn hide" />
             <label for="star5">☆</label>
             <input id="star4" name="rating" type="radio" value="4" class="radio-btn hide" />
@@ -115,7 +117,7 @@
             <label for="star1">☆</label>
             <div class="clear"></div>
         </div>
-                <button class="btn btn-default" type="button">Submit Rating</button>
+                <button class="btn btn-default" type="submit">Submit Rating</button>
             </form>
         </div>
     </div>

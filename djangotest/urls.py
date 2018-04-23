@@ -27,6 +27,6 @@ urlpatterns = [
     url(r'^signup/',views.signup,name='signup'),
     url(r'^profile/',views.profile,name='profile'),
     url(r'^feedback/',views.feedback,name='feedback'),
-    url(r'^rating/',views.rating,name='rating'),
+    url(r'^rating/$',views.rating,name='rating'),
 
 ]

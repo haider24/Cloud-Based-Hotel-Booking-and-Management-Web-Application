@@ -143,10 +143,11 @@
 
                         <h5 class="name">{{ comment.customer.name }}</h5>
                         <p>
-                            {% for i in "x"|just:comment.customer.rating %}
-                                <span class="fa fa-star checked"></span>
-                            {% endfor %}
-
+                        {% with ''|center:comment.customer.rating as range %}
+                        {% for _ in range %}
+                            <span class="fa fa-star checked"></span>
+                        {% endfor %}
+                        {% endwith %}
                         </p>
                     </div>
                 </div>

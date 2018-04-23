@@ -143,7 +143,7 @@
 
                         <h5 class="name">{{ comment.customer.name }}</h5>
                         <p>
-                            {% for i in "x"|ljust:comment.customer.rating %}
+                            {% for i in "x"|just:comment.customer.rating %}
                                 <span class="fa fa-star checked"></span>
                             {% endfor %}
 

@@ -89,9 +89,9 @@ button:hover, a:hover {
 <form method="POST" enctype='multipart/form-data'>
 {% csrf_token %}
     {% if user.profilePicture is null %}
-        <input type="image" id="editpic"  src="/static/assets/img/profile.png" alt="John" style="width:100%">
+        <input type="image" id="editpic" onclick="uploadImage()" src="/static/assets/img/profile.png" alt="John" style="width:100%">
     {% else %}
-        <input type="image" id="editpic" onclick="uploadImage()" src="{{ user.profilePicture.url }}" alt="John" style="width:100%">
+        <input type="image" id="editpic"  src="{{ user.profilePicture.url }}" alt="John" style="width:100%">
     {% endif %}
 
   <input type="file" name="image" onchange="PreviewImage()" accept="image/*" id="imageinput" style="display: none">

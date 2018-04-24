@@ -20,9 +20,8 @@ def login(request):
         if user == None:
             return render(request,'failed.html')
         else:
-            context={'user':user}
             request.session['userid']=user.id
-            return render(request, 'profile.html', context)
+            redirect('profile')
 
     return render(request,'login.html')
 

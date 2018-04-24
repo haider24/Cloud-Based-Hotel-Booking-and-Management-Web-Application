@@ -86,23 +86,23 @@ button:hover, a:hover {
 </div>
 
 <div class="card" id="edit" hidden style="background:#ffffff">
-
+<form method="post">
     {% if user.profilePicture is null %}
         <input type="image" id="editpic" onclick="uploadImage()" src="/static/assets/img/profile.png" alt="John" style="width:100%">
     {% else %}
         <input type="image" id="editpic" onclick="uploadImage()" src="{{ user.profilePicture.url }}" alt="John" style="width:100%">
     {% endif %}
 
-  <input type="file" onchange="PreviewImage()" accept="image/*" hidden id="imageinput" style="display: none">
-  <h3><input id="editname" type="text" placeholder="Name" value="John Doe"/></h3>
-  <h3><input id="editemail" type="Email" placeholder="Email" value="johndoe@gmail.com"/></h3>
+  <input type="file" name="image" onchange="PreviewImage()" accept="image/*" id="imageinput" style="display: none">
+  <h3><input id="editname" type="text" name="name" placeholder="Name" required/></h3>
+  <h3><input id="editemail" type="Email" name="email" placeholder="Email" required/></h3>
  <table style="width:100%">
   <tr>
-    <td><p><a href="/test"><button>Save</button></a></p></td>
+    <td><p><button type="submit">Save</button></p></td>
     <td><p><button onclick="cancel()">Cancel</button></p></td>
   </tr>
 </table>
-
+</form>
 </div>
     </div>
     <div class="footer-dark" style="background-color:#4f86c3;">
@@ -143,6 +143,7 @@ function cancel() {
 		document.getElementById("editname").value =document.getElementById("profname").innerHTML ;
 		document.getElementById("editemail").value = document.getElementById("profemail").innerHTML;
 		document.getElementById("editpic").src = document.getElementById("profpic").src;
+		document.getElementById("imageinput").reset();
 }
 function uploadImage() {
         document.getElementById("imageinput").click();

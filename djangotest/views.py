@@ -39,10 +39,24 @@ def signup(request):
     return render(request,'signup.html',context)
 
 def profile(request):
-    customerid = request.session['userid']
-    user = Customer.objects.get(id=customerid)
-    context = {'user': user}
-    return render(request, 'profile.html', context)
+    if request.method=="POST":
+        newName=request.POST.get('name')
+        newEmail=request.POST.get('email')
+        newImage=request.FILES.get('image')
+        customerid = request.session['userid']
+        user = Customer.objects.get(id=customerid)
+        user.name=newName
+        user.email=newEmail
+        if newImage is not None:
+            user.profilePicture = newImage
+        user.save()
+        redirect('profile')
+    else:
+        customerid = request.session['userid']
+        user = Customer.objects.get(id=customerid)
+        form = CustomerForm()
+        context = {'user': user, 'form': form}
+        return render(request, 'profile.html', context)
 
 def feedback(request):
     if request.method == "POST":
@@ -72,3 +86,5 @@ def rating(request):
         user.rating=customerRating
         user.save()
         return redirect('profile')
+
+

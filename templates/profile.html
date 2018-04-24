@@ -74,13 +74,13 @@ button:hover, a:hover {
 <div class="card" id="prof" style="background:#ffffff">
 
     {% if user.profilePicture is null %}
-        <img src="/static/assets/img/profile.png" alt="John" style="width:100%">
+        <img id="profpic" src="/static/assets/img/profile.png" alt="John" style="width:100%">
     {% else %}
-        <img src="{{ user.profilePicture.url }}" alt="John" style="width:100%">
+        <img id="profpic" src="{{ user.profilePicture.url }}" alt="John" style="width:100%">
     {% endif %}
 
-  <h1>{{ user.name }}</h1>
-  <p class="title">{{ user.email }}</p>
+  <h1 id="profname">{{ user.name }}</h1>
+  <p class="title" id="profemail">{{ user.email }}</p>
 
  <p><button onclick="editProfile()">Edit Profile</button></p>
 </div>
@@ -88,14 +88,14 @@ button:hover, a:hover {
 <div class="card" id="edit" hidden style="background:#ffffff">
 
     {% if user.profilePicture is null %}
-        <input type="image" onclick="uploadImage()" src="/static/assets/img/profile.png" alt="John" style="width:100%">
+        <input type="image" id="editpic" onclick="uploadImage()" src="/static/assets/img/profile.png" alt="John" style="width:100%">
     {% else %}
-        <input type="image" onclick="uploadImage()" src="{{ user.profilePicture.url }}" alt="John" style="width:100%">
+        <input type="image" id="editpic" onclick="uploadImage()" src="{{ user.profilePicture.url }}" alt="John" style="width:100%">
     {% endif %}
 
   <input type="file" accept="image/*" hidden id="imageinput" style="display: none">
-  <h3><input type="text" placeholder="Name" value="John Doe"/></h3>
-  <h3><input type="Email" placeholder="Email" value="johndoe@gmail.com"/></h3>
+  <h3><input id="editname" type="text" placeholder="Name" value="John Doe"/></h3>
+  <h3><input id="editemail" type="Email" placeholder="Email" value="johndoe@gmail.com"/></h3>
  <table style="width:100%">
   <tr>
     <td><p><a href="/test"><button>Save</button></a></p></td>
@@ -140,6 +140,8 @@ function editProfile() {
 function cancel() {
         document.getElementById("prof").hidden = false;
 		document.getElementById("edit").hidden = true;
+		document.getElementById("editname").value =document.getElementById("profname").value ;
+		document.getElementById("editemail").value = document.getElementById("profemail").value;
 }
 function uploadImage() {
         document.getElementById("imageinput").click();

@@ -95,8 +95,8 @@ button:hover, a:hover {
     {% endif %}
 
   <input type="file" name="image" onchange="PreviewImage()" accept="image/*" id="imageinput" style="display: none">
-  <h3><input id="editname" type="text" name="name" placeholder="Name" required/></h3>
-  <h3><input id="editemail" type="Email" name="email" placeholder="Email" required/></h3>
+  <h3><input id="editname" type="text" name="name" value="{{ user.name }}" placeholder="Name" required/></h3>
+  <h3><input id="editemail" type="Email" name="email" value="{{ user.email }}" placeholder="Email" required/></h3>
 {# <table style="width:100%">#}
 {#  <tr>#}
 {#    <td><p><button type="submit">Save</button></p></td>#}
@@ -104,8 +104,8 @@ button:hover, a:hover {
 {#  </tr>#}
 {#</table>#}
 <p><button type="submit">Save</button></p>
-<p><button onclick="cancel()">Cancel</button></p>
 </form>
+<p><button onclick="cancel()">Cancel</button></p>
 </div>
     </div>
     <div class="footer-dark" style="background-color:#4f86c3;">

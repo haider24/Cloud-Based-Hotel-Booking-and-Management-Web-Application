@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader, RequestContext
 from djangotest.forms import CustomerForm
 from djangotest.models import Customer,Comment
@@ -21,8 +21,7 @@ def login(request):
             return render(request,'failed.html')
         else:
             request.session['userid']=user.id
-            request.method='GET'
-            redirect('profile')
+            return HttpResponseRedirect('/profile')
 
     return render(request,'login.html')
 
@@ -54,8 +53,7 @@ def profile(request):
     else:
         customerid = request.session['userid']
         user = Customer.objects.get(id=customerid)
-        form = CustomerForm()
-        context = {'user': user, 'form': form}
+        context = {'user': user}
         return render(request, 'profile.html', context)
 
 def feedback(request):
@@ -85,7 +83,6 @@ def rating(request):
         user=Customer.objects.get(id=customerid)
         user.rating=customerRating
         user.save()
-        request.method='GET'
-        return redirect('profile')
+        return HttpResponseRedirect('/profile')
 
 

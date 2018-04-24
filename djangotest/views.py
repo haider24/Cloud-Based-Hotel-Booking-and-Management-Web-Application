@@ -21,6 +21,7 @@ def login(request):
             return render(request,'failed.html')
         else:
             request.session['userid']=user.id
+            request.method='GET'
             redirect('profile')
 
     return render(request,'login.html')
@@ -84,6 +85,7 @@ def rating(request):
         user=Customer.objects.get(id=customerid)
         user.rating=customerRating
         user.save()
+        request.method='GET'
         return redirect('profile')
 
 

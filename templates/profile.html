@@ -86,7 +86,8 @@ button:hover, a:hover {
 </div>
 
 <div class="card" id="edit" hidden style="background:#ffffff">
-<form method="post">
+<form method="POST" enctype='multipart/form-data'>
+{% csrf_token %}
     {% if user.profilePicture is null %}
         <input type="image" id="editpic" onclick="uploadImage()" src="/static/assets/img/profile.png" alt="John" style="width:100%">
     {% else %}

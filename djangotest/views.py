@@ -49,7 +49,7 @@ def profile(request):
         if newImage is not None:
             user.profilePicture = newImage
         user.save()
-        redirect('profile')
+        return HttpResponseRedirect('/profile')
     else:
         customerid = request.session['userid']
         user = Customer.objects.get(id=customerid)

@@ -16,18 +16,19 @@
     <link rel="stylesheet" href="{% static 'assets/css/Navigation-with-Button1.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/Registration-Form-with-Photo.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+    <link href="/static/base/css/ct-navbar.css" rel="stylesheet" />
 </head>
 
 <body>
     <nav class="navbar navbar-default navigation-clean-button" style="background-color:#4f86c3;">
         <div class="container">
-            <div class="navbar-header">
-                <div>
+            <a class="navbar-brand navbar-brand-logo" href="">
+                    <div>
                     <img src="/static/base/images/cloud.png" style="height:50px;width:50px;">
 					Cloud Hotel
 					</img>
                     </div>
-            </div>
+              </a>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav"></ul>
                 <p class="navbar-text navbar-right actions"><a class="navbar-link login" href="/login" style="color:#ffffff;">Log In</a> <a class="btn btn-default action-button" role="button" href="/signup">Sign Up Now To Book a Room!</a></p>

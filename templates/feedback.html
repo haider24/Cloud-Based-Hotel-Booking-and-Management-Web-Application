@@ -143,7 +143,7 @@
 
                         <h5 class="name">{{ comment.user.first_name }}</h5>
                         <p>
-                        {% with ''|center:comment.user.profile.rating as range %}
+                        {% with ''|center:comment.user.profile.Rating as range %}
                         {% for _ in range %}
                             <span class="fa fa-star checked"></span>
                         {% endfor %}

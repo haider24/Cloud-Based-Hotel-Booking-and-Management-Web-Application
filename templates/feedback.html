@@ -135,7 +135,7 @@
                     </div>
                     <div class="author">
 
-                        {% if comment.customer.profilePicture == null %}
+                        {% if comment.user.profile.profilePicture == null %}
                             <img class="img-circle" src="/static/assets/img/profile.png">
                         {% else %}
                             <img class="img-circle" src="{{ comment.user.profile.profilePicture.url }}">

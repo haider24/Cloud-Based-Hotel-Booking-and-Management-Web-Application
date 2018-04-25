@@ -49,6 +49,8 @@ def signup(request):
         return render(request, 'signup.html')
 
 def profile(request):
+    if not request.user.is_authenticated:
+        return redirect('index')
     if request.method=="POST":
         newName=request.POST.get('name')
         newEmail=request.POST.get('email')
@@ -64,6 +66,8 @@ def profile(request):
         return render(request, 'profile.html')
 
 def feedback(request):
+    if not request.user.is_authenticated:
+        return redirect('index')
     if request.method == "POST":
         customerComment=request.POST.get('comment')
         user=request.user

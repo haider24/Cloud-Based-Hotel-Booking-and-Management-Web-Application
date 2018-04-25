@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader, RequestContext
@@ -10,7 +10,7 @@ def index(request):
      return render(request,'homepage.html')
 # Create your views here.
 
-def login(request):
+def signin(request):
     if request.method == "POST":
         userName=request.POST.get('username')
         userPassword=request.POST.get('password')

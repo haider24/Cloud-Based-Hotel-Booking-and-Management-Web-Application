@@ -16,8 +16,8 @@ from djangotest.models import Profile,Room,RoomType,Comment
 #         }
 
 class ProfileAdmin(admin.ModelAdmin):
-    #list_display = ('user','profilePicture','rating')
-    #list_display_links = None
+    list_display = ('name','email','rating')
+    list_display_links = None
     def has_add_permission(self, request):
         return False
 

@@ -16,6 +16,12 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     rating = models.IntegerField(default=0, verbose_name='Rating', blank=True, null=True,validators=[MaxValueValidator(5), MinValueValidator(0)])
     profilePicture = CloudinaryField('image', default=None, blank=True, null=True)
+    def name(self):
+        return self.user.first_name
+    def email(self):
+        return self.user.email
+    def rating(self):
+        return str(self.rating)
 
 
 @receiver(post_save, sender=User)

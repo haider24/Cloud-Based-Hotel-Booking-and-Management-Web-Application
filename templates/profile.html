@@ -73,10 +73,10 @@ button:hover, a:hover {
 
 <div class="card" id="prof" style="background:#ffffff">
 
-    {% if user.profilePicture is null %}
+    {% if user.profile.profilePicture is null %}
         <img id="profpic" src="/static/assets/img/profile.png" alt="John" style="width:100%">
     {% else %}
-        <img id="profpic" src="{{ user.profilePicture.url }}" alt="John" style="width:100%">
+        <img id="profpic" src="{{ user.profile.profilePicture.url }}" alt="John" style="width:100%">
     {% endif %}
 
   <h1 id="profname">{{ user.first_name }}</h1>

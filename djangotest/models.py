@@ -20,8 +20,8 @@ class Profile(models.Model):
         return self.user.first_name
     def email(self):
         return self.user.email
-    def rating(self):
-        return str(self.rating)
+    # def rating(self):
+    #     return str(self.rating)
 
 
 @receiver(post_save, sender=User)

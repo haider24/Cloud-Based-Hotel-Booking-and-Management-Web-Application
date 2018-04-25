@@ -1,26 +1,42 @@
 from django.db import models
-from django.db.models.signals import pre_delete
+from django.db.models.signals import pre_delete, post_save
 from cloudinary.models import CloudinaryField
 import cloudinary
+from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator
-
-
-# Create your models here.
 from django.dispatch import receiver
 from django.utils.safestring import mark_safe
 from django.core.validators import MaxValueValidator, MinValueValidator
 
+# Create your models here.
 
-class Customer(models.Model):
-    id = models.AutoField(primary_key=True)
-    name=models.CharField(max_length=100,verbose_name='Name')
-    email=models.EmailField(verbose_name='Email')
-    password=models.CharField(max_length=50,verbose_name='Password')
-    rating=models.IntegerField(default=0,verbose_name='Rating',blank=True,null=True,validators=[MaxValueValidator(5), MinValueValidator(0)])
-    profilePicture=CloudinaryField('image',default=None,blank=True,null=True)
 
-    def __str__(self):
-        return self.name
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    rating = models.IntegerField(default=0, verbose_name='Rating', blank=True, null=True,validators=[MaxValueValidator(5), MinValueValidator(0)])
+    profilePicture = CloudinaryField('image', default=None, blank=True, null=True)
+
+
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    instance.profile.save()
+
+# class Customer(models.Model):
+#     id = models.AutoField(primary_key=True)
+#     name=models.CharField(max_length=100,verbose_name='Name')
+#     email=models.EmailField(verbose_name='Email')
+#     password=models.CharField(max_length=50,verbose_name='Password')
+#     rating=models.IntegerField(default=0,verbose_name='Rating',blank=True,null=True,validators=[MaxValueValidator(5), MinValueValidator(0)])
+#     profilePicture=CloudinaryField('image',default=None,blank=True,null=True)
+#
+#     def __str__(self):
+#         return self.name
 
 
 class RoomType(models.Model):
@@ -62,13 +78,13 @@ def photo_delete(sender, instance, **kwargs):
 
 class Comment(models.Model):
     comment=models.CharField(max_length=200)
-    customer=models.ForeignKey(Customer,on_delete=models.CASCADE)
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
 
     def _str_(self):
         return str(self.comment)
 
     def customername(self):
-        return self.customer.name
+        return self.customer.first_name
 
     def customeremail(self):
         return self.customer.email

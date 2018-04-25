@@ -1,8 +1,10 @@
+from django.contrib.auth import authenticate
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader, RequestContext
 from djangotest.forms import CustomerForm
-from djangotest.models import Customer,Comment
+from djangotest.models import Profile,Comment
+from django.contrib.auth.models import User
 
 
 def index(request):
@@ -11,65 +13,60 @@ def index(request):
 
 def login(request):
     if request.method == "POST":
-        userEmail=request.POST.get('email')
+        userName=request.POST.get('username')
         userPassword=request.POST.get('password')
-        try:
-            user = Customer.objects.get(email=userEmail,password=userPassword)
-        except Customer.DoesNotExist:
-            user=None
+        user=authenticate(username=userName,password=userPassword)
         if user == None:
             return render(request,'failed.html')
         else:
-            request.session['userid']=user.id
+            login(request,user)
             return HttpResponseRedirect('/profile')
-
-    return render(request,'login.html')
+    else:
+        return render(request, 'login.html')
 
 
 def signup(request):
     if request.method == "POST":
-        data = CustomerForm(request.POST,request.FILES)
-        newCustomer = data.save()
-        context={'form':data}
-        return render(request,'test.html',context)
-
-    form = CustomerForm()
-    context = {'form':form}
-    return render(request,'signup.html',context)
+        name = request.POST.get('name')
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        image = request.FILES.get('image')
+        user=User.objects.create_user(first_name=name,username=username,email=email,password=password)
+        if image is not None:
+            user.profile.profilePicture=image
+        user.save()
+        return HttpResponseRedirect('/profile')
+    else:
+        return render(request, 'signup.html')
 
 def profile(request):
     if request.method=="POST":
         newName=request.POST.get('name')
         newEmail=request.POST.get('email')
         newImage=request.FILES.get('image')
-        customerid = request.session['userid']
-        user = Customer.objects.get(id=customerid)
-        user.name=newName
+        user = request.user
         user.email=newEmail
+        user.first_name=newName
         if newImage is not None:
-            user.profilePicture = newImage
+            user.profile.profilePicture = newImage
         user.save()
         return HttpResponseRedirect('/profile')
     else:
-        customerid = request.session['userid']
-        user = Customer.objects.get(id=customerid)
-        context = {'user': user}
-        return render(request, 'profile.html', context)
+        return render(request, 'profile.html')
 
 def feedback(request):
     if request.method == "POST":
-        customerid=request.session['userid']
         customerComment=request.POST.get('comment')
-        user=Customer.objects.get(id=customerid)
-        comment=Comment(comment=customerComment,customer=user)
+        user=request.user
+        comment=Comment(comment=customerComment,user=user)
         comment.save()
         allComments=getComments()
-        context={'comments':allComments,'user':user}
+        context={'comments':allComments}
         return render(request, 'feedback.html', context)
     allComments=getComments
-    customerid = request.session['userid']
-    user=Customer.objects.get(id=customerid)
-    context = {'comments': allComments, 'user': user}
+    user=request.user
+    context = {'comments': allComments}
     return render(request, 'feedback.html', context)
 
 def getComments():
@@ -78,10 +75,9 @@ def getComments():
 
 def rating(request):
     if request.method == "POST":
-        customerid=request.session['userid']
         customerRating=request.POST.get('rating')
-        user=Customer.objects.get(id=customerid)
-        user.rating=customerRating
+        user=request.user
+        user.profile.rating=customerRating
         user.save()
         return HttpResponseRedirect('/profile')
 

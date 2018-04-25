@@ -63,7 +63,7 @@ button:hover, a:hover {
                     <li role="presentation"><a href="/feedback" style="color:#ffffff;"><strong>F</strong>eedback </a></li>
                 </ul>
                 <p class="navbar-text navbar-right actions">
-                    <a class="btn"  style="color:#ffffff;">{{ user.name }}</a>
+                    <a class="btn"  style="color:#ffffff;">{{ user.first_name }}</a>
                 </p>
             </div>
         </div>
@@ -79,7 +79,7 @@ button:hover, a:hover {
         <img id="profpic" src="{{ user.profilePicture.url }}" alt="John" style="width:100%">
     {% endif %}
 
-  <h1 id="profname">{{ user.name }}</h1>
+  <h1 id="profname">{{ user.first_name }}</h1>
   <p class="title" id="profemail">{{ user.email }}</p>
 
  <p><button onclick="editProfile()">Edit Profile</button></p>
@@ -94,12 +94,12 @@ button:hover, a:hover {
         </a>
     {% else %}
         <a onclick="uploadImage()">
-        <img src="{{ user.profilePicture.url }}" id="editpic" alt="John" style="width:100%">
+        <img src="{{ user.profile.profilePicture.url }}" id="editpic" alt="John" style="width:100%">
         </a>
     {% endif %}
 
   <input type="file" name="image" onchange="PreviewImage()" accept="image/*" id="imageinput" style="display: none">
-  <h3><input id="editname" type="text" name="name" value="{{ user.name }}" placeholder="Name" required/></h3>
+  <h3><input id="editname" type="text" name="name" value="{{ user.first_name }}" placeholder="Name" required/></h3>
   <h3><input id="editemail" type="Email" name="email" value="{{ user.email }}" placeholder="Email" required/></h3>
 {# <table style="width:100%">#}
 {#  <tr>#}

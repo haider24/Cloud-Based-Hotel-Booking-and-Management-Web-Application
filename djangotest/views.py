@@ -35,7 +35,8 @@ def signup(request):
         if image is not None:
             user.profile.profilePicture=image
         user.save()
-        return HttpResponseRedirect('/profile')
+        redirect('profile')
+        #return HttpResponseRedirect('/profile')
     else:
         return render(request, 'signup.html')
 

@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 
 
 def index(request):
-    if request.user.is_authenticated():
+    if request.user.is_authenticated:
         return redirect('profile')
     else:
         return render(request, 'homepage.html')

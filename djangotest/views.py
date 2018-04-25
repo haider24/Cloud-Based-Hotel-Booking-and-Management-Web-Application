@@ -25,7 +25,7 @@ def signin(request):
 
 def signout(request):
     logout(request)
-    redirect('login')
+    return redirect('login')
 
 
 def signup(request):
@@ -39,8 +39,8 @@ def signup(request):
         if image is not None:
             user.profile.profilePicture=image
         user.save()
-        #redirect('profile')
-        return HttpResponseRedirect('/profile')
+        return redirect('profile')
+        #return HttpResponseRedirect('/profile')
     else:
         return render(request, 'signup.html')
 

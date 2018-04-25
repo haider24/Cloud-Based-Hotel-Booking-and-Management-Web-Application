@@ -28,7 +28,7 @@ def signin(request):
 
 def signout(request):
     logout(request)
-    return redirect('login')
+    return redirect('index')
 
 
 def signup(request):

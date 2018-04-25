@@ -78,7 +78,7 @@ def photo_delete(sender, instance, **kwargs):
 
 class Comment(models.Model):
     comment=models.CharField(max_length=200)
-    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    user=models.ForeignKey(User,on_delete=models.CASCADE,default=None)
 
     def _str_(self):
         return str(self.comment)

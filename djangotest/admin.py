@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.forms import ModelForm
 from django import forms
 
-from djangotest.models import Customer,Room,RoomType,Comment
+from djangotest.models import Profile,Room,RoomType,Comment
 
 # Register your models here.
 
@@ -15,9 +15,9 @@ from djangotest.models import Customer,Room,RoomType,Comment
 #             'image1':forms.ImageInput ,
 #         }
 
-class CustomerAdmin(admin.ModelAdmin):
-    list_display = ('id','name', 'email','profilePicture','rating')
-    list_display_links = None
+class ProfileAdmin(admin.ModelAdmin):
+    #list_display = ('user','profilePicture','rating')
+    #list_display_links = None
     def has_add_permission(self, request):
         return False
 
@@ -28,7 +28,7 @@ class CommentAdmin(admin.ModelAdmin):
     list_display =('comment','customername','customeremail')
 
 
-admin.site.register(Customer,CustomerAdmin)
+admin.site.register(Profile,ProfileAdmin)
 admin.site.register(Room,RoomAdmin)
 admin.site.register(RoomType)
 admin.site.register(Comment,CommentAdmin)

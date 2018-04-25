@@ -2,7 +2,6 @@ from django.contrib.auth import authenticate
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader, RequestContext
-from djangotest.forms import CustomerForm
 from djangotest.models import Profile,Comment
 from django.contrib.auth.models import User
 

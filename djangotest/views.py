@@ -7,7 +7,10 @@ from django.contrib.auth.models import User
 
 
 def index(request):
-     return render(request,'homepage.html')
+    if request.user.is_authenticated():
+        return redirect('profile')
+    else:
+        return render(request, 'homepage.html')
 # Create your views here.
 
 def signin(request):

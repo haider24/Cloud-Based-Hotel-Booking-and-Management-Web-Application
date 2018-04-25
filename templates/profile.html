@@ -39,7 +39,7 @@ button:hover, a:hover {
     <div style="text-align:center;padding:40px;background:url(&quot;/static/assets/img/hotel3.jpg&quot;)no-repeat;background-size:cover;">
         <h2>User Profile</h2>
 
-<div class="card" id="prof" style="background:#ffffff;margin-top:20px;">
+<div class="card" id="prof" style="background:#ffffff;margin-top:30px;">
 
     {% if user.profile.profilePicture is null %}
         <img id="profpic" src="/static/assets/img/profile.png" alt="John" style="width:100%">
@@ -53,7 +53,7 @@ button:hover, a:hover {
  <p><button onclick="editProfile()">Edit Profile</button></p>
 </div>
 
-<div class="card" id="edit" hidden style="background:#ffffff;margin-top:20px;">
+<div class="card" id="edit" hidden style="background:#ffffff;margin-top:30px;">
 <form method="POST" enctype='multipart/form-data'>
 {% csrf_token %}
     {% if user.profile.profilePicture is null %}

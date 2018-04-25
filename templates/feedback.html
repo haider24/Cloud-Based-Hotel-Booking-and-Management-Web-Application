@@ -1,25 +1,10 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feedback</title>
-    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/fonts/ionicons.min.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/Article-List.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/Features-Blue.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/Footer-Clean.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/Footer-Dark.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/Login-Form-Dark.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/Navigation-with-Button1.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/Registration-Form-with-Photo.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
-    <link rel="stylesheet" href="/static/assets/css/Testimonials.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <style>
+{% block content %}
+
+  <style>
 
         .checked {
     color: orange;
@@ -73,25 +58,6 @@
 
 
 	</style>
-</head>
-
-<body>
-    <nav class="navbar navbar-default navigation-clean-button" style="background-color:#4f86c3;">
-        <div class="container">
-            <div class="navbar-header"><a class="navbar-brand navbar-link" href="#" style="color:#ffffff;">Cloud Hotel</a>
-                <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-            </div>
-            <div class="collapse navbar-collapse" id="navcol-1">
-                <ul class="nav navbar-nav">
-                    <li role="presentation"><a href="#" style="color:#ffffff;"><strong>H</strong>ome </a></li>
-                    <li role="presentation"><a href="#" style="color:#ffffff;">Profile </a></li>
-                </ul>
-                <p class="navbar-text navbar-right actions">
-                    <a class="btn"  style="color:#ffffff;">{{ user.first_name }}</a>
-                </p>
-            </div>
-        </div>
-    </nav>
     <div style="text-align:center;padding:40px;background:url(&quot;/static/assets/img/hotel3.jpg&quot;)no-repeat;background-size:cover;">
         <div class="jumbotron" style="border-radius:20px;padding:40px;background:rgba(255,255,255,0.75);margin:auto;width:450px;height:auto;">
             <h3>Share your experience with others</h3>
@@ -156,33 +122,8 @@
 
         </div>
     </div>
-    <div class="footer-dark" style="background-color:#4f86c3;">
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 col-md-push-6 item text">
-                        <h3>About the Company</h3>
-                        <p>Praesent sed lobortis mi. Suspendisse vel placerat ligula. Vivamus ac sem lacus. Ut vehicula rhoncus elementum. Etiam quis tristique lectus. Aliquam in arcu eget velit pulvinar dictum vel in justo.</p>
-                    </div>
-                    <div class="col-md-3 col-md-pull-6 col-sm-4 item">
-                        <ul>
-                            <li><i class="glyphicon glyphicon-earphone" style="width:30px;"></i>
-                                <label>111 555 666</label>
-                            </li>
-                            <li><i class="glyphicon glyphicon-envelope" style="width:30px;"></i>
-                                <label>111 555 666</label>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-md-12 col-sm-4 item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
-                </div>
-                <p class="copyright">Company Name © 2016</p>
-            </div>
-        </footer>
-    </div>
+
     <script src="{% static 'assets/js/jquery.min.js' %}"></script>
     <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'assets/js/myjs.js' %}"></script>
-</body>
-
-</html>
+{% endblock %}

@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index, name='index'),
     url(r'^login/',views.signin,name='login'),
+    url(r'^logout/',views.signout,name='logout'),
     url(r'^signup/',views.signup,name='signup'),
     url(r'^profile/',views.profile,name='profile'),
     url(r'^feedback/',views.feedback,name='feedback'),

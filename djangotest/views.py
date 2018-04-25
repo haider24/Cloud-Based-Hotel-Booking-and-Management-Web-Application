@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader, RequestContext
@@ -22,6 +22,10 @@ def signin(request):
             return HttpResponseRedirect('/profile')
     else:
         return render(request, 'login.html')
+
+def signout(request):
+    logout(request)
+    redirect('login')
 
 
 def signup(request):

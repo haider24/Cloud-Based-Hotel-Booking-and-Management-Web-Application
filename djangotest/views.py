@@ -1,4 +1,5 @@
-from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader, RequestContext
@@ -98,5 +99,18 @@ def rating(request):
         user.profile.rating=customerRating
         user.save()
         return HttpResponseRedirect('/profile')
+
+def changePassword(request):
+    if not request.user.is_authenticated:
+        return redirect('index')
+    if request.method == "POST":
+        user=request.user
+        newPassword=request.POST.get('password')
+        user.password=newPassword
+        user.save()
+        update_session_auth_hash(request, user)
+        messages.success(request, 'Password changed Successfully')
+        return redirect('profile')
+
 
 

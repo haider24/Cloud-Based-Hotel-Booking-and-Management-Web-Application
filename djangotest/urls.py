@@ -29,5 +29,6 @@ urlpatterns = [
     url(r'^profile/',views.profile,name='profile'),
     url(r'^feedback/',views.feedback,name='feedback'),
     url(r'^rating/',views.rating,name='rating'),
+    url(r'^changepassword/',views.changePassword,name='changePassword'),
 
 ]

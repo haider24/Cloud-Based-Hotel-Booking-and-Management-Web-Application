@@ -37,6 +37,13 @@ button:hover, a:hover {
   opacity: 0.7;
 }
 </style>
+    {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
     <div style="text-align:center;padding:40px;background:url(&quot;/static/assets/img/hotel3.jpg&quot;)no-repeat;background-size:cover;">
         <h2>User Profile</h2>
 
@@ -52,6 +59,7 @@ button:hover, a:hover {
   <p class="title" id="profemail">{{ user.email }}</p>
 
  <p><button onclick="editProfile()">Edit Profile</button></p>
+<p><button onclick="changePassword()">Change Password</button></p>
 </div>
 
 <div class="card" id="edit" hidden style="background:#ffffff;margin-top:30px;">
@@ -80,6 +88,22 @@ button:hover, a:hover {
 </form>
 <p><button onclick="cancel()">Cancel</button></p>
 </div>
+
+    <div class="card" id="changepass" hidden style="background:#ffffff;margin-top:30px;">
+<form method="POST" action="/changepassword/">
+{% csrf_token %}
+    {% if user.profile.profilePicture is null %}
+        <img src="/static/assets/img/profile.png" id="editpic" alt="John" style="width:100%">
+    {% else %}
+        <img src="{{ user.profile.profilePicture.url }}" id="editpic" alt="John" style="width:100%">
+    {% endif %}
+
+  <h3><input id="editemail" type="Password" name="password" id="newpass" placeholder="New Password" required/></h3>
+<p><button type="submit">Save</button></p>
+</form>
+<p><button onclick="cancelPassword()">Cancel</button></p>
+</div>
+
     </div>
 
 <script>
@@ -87,7 +111,16 @@ function editProfile() {
         document.getElementById("prof").hidden = true;
 		document.getElementById("edit").hidden = false;
 }
+function changePassword() {
+        document.getElementById("prof").hidden = true;
+		document.getElementById("changepass").hidden = false;
+}
 function cancel() {
+        document.getElementById("prof").hidden = false;
+		document.getElementById("changepass").hidden = true;
+		document.getElementById("editname").value ="";
+}
+function cancelPassword() {
         document.getElementById("prof").hidden = false;
 		document.getElementById("edit").hidden = true;
 		document.getElementById("editname").value =document.getElementById("profname").innerHTML ;

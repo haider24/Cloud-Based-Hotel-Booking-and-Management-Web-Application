@@ -120,14 +120,14 @@ def checkUsername(username):
         checkUser = User.objects.get(username=username)
     except User.DoesNotExist:
         return False
-    return True,{'message','Username already taken'}
+    return True,{'message':'Username already taken'}
 
 def checkEmail(email):
     try:
         checkUser = User.objects.get(email=email)
     except User.DoesNotExist:
         return False
-    return True,{'message','An account with this email already exists'}
+    return True,{'message':'An account with this email already exists'}
 
 
 

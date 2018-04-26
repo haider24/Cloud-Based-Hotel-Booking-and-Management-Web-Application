@@ -37,6 +37,13 @@ button:hover, a:hover {
   opacity: 0.7;
 }
 </style>
+    {% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <li class="{{ message.tags }}">{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
     <div style="text-align:center;padding:40px;background:url(&quot;/static/assets/img/hotel3.jpg&quot;)no-repeat;background-size:cover;">
         <h2>User Profile</h2>
 

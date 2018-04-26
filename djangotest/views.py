@@ -43,6 +43,10 @@ def signup(request):
         email = request.POST.get('email')
         password = request.POST.get('password')
         image = request.FILES.get('image')
+        usernameCheck,message=checkUsername(username)
+        emailCheck,message=checkEmail(email)
+        if usernameCheck or emailCheck:
+            return render(request,'signup.html',message)
         user=User.objects.create_user(first_name=name,username=username,email=email,password=password)
         if image is not None:
             user.profile.profilePicture=image
@@ -110,6 +114,21 @@ def changePassword(request):
         user.save()
         update_session_auth_hash(request, user)
         return redirect('profile')
+
+def checkUsername(username):
+    try:
+        checkUser = User.objects.get(username=username)
+    except User.DoesNotExist:
+        return False
+    return True,{'message','Username already taken'}
+
+def checkEmail(email):
+    try:
+        checkUser = User.objects.get(email=email)
+    except User.DoesNotExist:
+        return False
+    return True,{'message','An account with this email already exists'}
+
 
 
 

@@ -37,13 +37,7 @@ button:hover, a:hover {
   opacity: 0.7;
 }
 </style>
-    {% if messages %}
-  <ul class="messages">
-    {% for message in messages %}
-      <li class="{{ message.tags }}">{{ message }}</li>
-    {% endfor %}
-  </ul>
-{% endif %}
+
     <div style="text-align:center;padding:40px;background:url(&quot;/static/assets/img/hotel3.jpg&quot;)no-repeat;background-size:cover;">
         <h2>User Profile</h2>
 
@@ -98,7 +92,7 @@ button:hover, a:hover {
         <img src="{{ user.profile.profilePicture.url }}" id="editpic" alt="John" style="width:100%">
     {% endif %}
 
-  <h3><input id="editemail" type="Password" name="password" id="newpass" placeholder="New Password" required/></h3>
+  <h3><input type="Password" name="password" id="newpass" placeholder="New Password" required/></h3>
 <p><button type="submit">Save</button></p>
 </form>
 <p><button onclick="cancelPassword()">Cancel</button></p>

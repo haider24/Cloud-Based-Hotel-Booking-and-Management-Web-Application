@@ -37,13 +37,6 @@ button:hover, a:hover {
   opacity: 0.7;
 }
 </style>
-    {% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
     <div style="text-align:center;padding:40px;background:url(&quot;/static/assets/img/hotel3.jpg&quot;)no-repeat;background-size:cover;">
         <h2>User Profile</h2>
 
@@ -117,16 +110,17 @@ function changePassword() {
 }
 function cancel() {
         document.getElementById("prof").hidden = false;
-		document.getElementById("changepass").hidden = true;
-		document.getElementById("editname").value ="";
-}
-function cancelPassword() {
-        document.getElementById("prof").hidden = false;
 		document.getElementById("edit").hidden = true;
 		document.getElementById("editname").value =document.getElementById("profname").innerHTML ;
 		document.getElementById("editemail").value = document.getElementById("profemail").innerHTML;
 		document.getElementById("editpic").src = document.getElementById("profpic").src;
         document.getElementById("imageinput").value="";
+}
+function cancelPassword() {
+        document.getElementById("prof").hidden = false;
+		document.getElementById("changepass").hidden = true;
+		document.getElementById("newpass").value ="";
+
 }
 function uploadImage() {
         document.getElementById("imageinput").click();

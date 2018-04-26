@@ -14,6 +14,8 @@ def index(request):
 # Create your views here.
 
 def signin(request):
+    if request.user.is_authenticated:
+        return redirect('profile')
     if request.method == "POST":
         userName=request.POST.get('username')
         userPassword=request.POST.get('password')
@@ -32,6 +34,8 @@ def signout(request):
 
 
 def signup(request):
+    if request.user.is_authenticated:
+        return redirect('profile')
     if request.method == "POST":
         name = request.POST.get('name')
         username = request.POST.get('username')
@@ -86,6 +90,8 @@ def getComments():
     return comments
 
 def rating(request):
+    if not request.user.is_authenticated:
+        return redirect('index')
     if request.method == "POST":
         customerRating=request.POST.get('rating')
         user=request.user

@@ -21,7 +21,7 @@ def signin(request):
         userPassword=request.POST.get('password')
         user=authenticate(username=userName,password=userPassword)
         if user == None:
-            return render(request,'failed.html')
+            return render(request,'login.html',{'message':'Invalid Username or Password'})
         else:
             login(request,user)
             return HttpResponseRedirect('/profile')

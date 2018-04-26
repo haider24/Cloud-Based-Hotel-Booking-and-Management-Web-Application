@@ -106,10 +106,9 @@ def changePassword(request):
     if request.method == "POST":
         user=request.user
         newPassword=request.POST.get('password')
-        user.set_password=newPassword
+        user.set_password(newPassword)
         user.save()
         update_session_auth_hash(request, user)
-        messages.success(request, 'Password changed Successfully')
         return redirect('profile')
 
 

@@ -17,7 +17,7 @@
                         {% for image in images %}
                             {% if image.roomType.id == room.id %}
                         <div class="swiper-slide" style="height:inherit;width:inherit;">
-                             <img src="{{ image.image.url }}" style="height: 100%; width: 100%; object-fit: contain;">
+                             <img src="{{ image.image.url }}" style="height: 100%; width: 100%; object-fit: cover;">
                         </div>
                             {% endif %}
                         {% endfor %}

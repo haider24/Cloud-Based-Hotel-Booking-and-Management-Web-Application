@@ -4,7 +4,7 @@
 {% block content %}
 
 
-<div class="container" style="background-color:#e5e5ff;">
+<div class="container" style="background-color:#e5e5ff;margin-top:100px;">
         <div class="intro">
             <h2 class="text-center">Our Rooms</h2>
             <p class="text-center">We have different kinds of rooms according to your requirements</p>
@@ -26,9 +26,9 @@
                     <div class="swiper-button-prev" style="width:25px;height:22px;"></div>
                     <div class="swiper-button-next" style="width:25px;height:22px;"></div>
                 </div>
-                <h4 class="name" style="text-align:center;">Single Bed</h4>
-                <h4 class="name" style="text-align:center;">Price: 2000PPKR</h4>
-                <p style="text-align:center;">Room with single bed equiped with wifi, LED</p>
+                <h4 class="name" style="text-align:center;">{{ room.type}}</h4>
+                <h4 class="name" style="text-align:center;">Price: {{ room.price }}</h4>
+                <p style="text-align:center;">{{ room.description }}</p>
                 <div style="text-align:center;">
                     {% if room.roomService %}
                     <div style="display:inline-block;margin:2px;"><i class="material-icons">room_service</i>

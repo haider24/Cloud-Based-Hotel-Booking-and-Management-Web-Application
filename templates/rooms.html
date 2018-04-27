@@ -80,11 +80,11 @@
                         {% csrf_token %}
                         <div class="form-group" data-aos="fade-up">
                             <label class="control-label" for="from">From </label>
-                            <input class="form-control" type="date" name="from" id="from">
+                            <input class="form-control" type="date" name="from" id="from" onchange="setMinDate()" required>
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="to">To </label>
-                            <input class="form-control" type="date" name="to" id="to">
+                            <input class="form-control" type="date" name="to" id="to" required>
                         </div>
                         <input class="form-control" name="id" id="roomid" type="text">
                         <div class="modal-footer">
@@ -102,8 +102,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.jquery.min.js"></script>
     <script src="/static/assets/js/Simple-Slider.js"></script>
     <script>
+    var t=new Date();
+    t.setDate(t.getDate()+1);
+    var today = new Date(t).toISOString().split('T')[0];
+    document.getElementById("from").setAttribute('min', today);
+    document.getElementById("to").setAttribute('min', today);
     function bookingClicked(id) {
         document.getElementById("roomid").value = id;
+}
+function setMinDate() {
+var t=document.getElementById("from").value;
+var minDate=new Date(String(t));
+minDate.setDate(minDate.getDate()+1);
+var today = new Date(minDate).toISOString().split('T')[0];
+document.getElementById("to").setAttribute('min', today);
 }
     </script>
 {% endblock %}

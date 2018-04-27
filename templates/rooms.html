@@ -62,15 +62,46 @@
                 {% endif %}
                 </div>
                 <div style="text-align:center;">
-                    <button class="btn btn-default" type="button" style="margin:auto;background-color:rgb(86,198,198);background-image:url(&quot;None&quot;);color:#ffffff;">Book Room</button>
+                    <button onclick="bookingClicked({{ room.id }})" class="btn btn-info btn-lg" data-toggle="modal" data-target="#bookingmodal" type="button" style="margin:auto;background-color:rgb(86,198,198);background-image:url(&quot;None&quot;);color:#ffffff;">Book Room</button>
                 </div>
             </div>
             {% endfor %}
         </div>
     </div>
 
+    <div class="modal fade" role="dialog" id="bookingmodal" tabindex="-1" data-aos="zoom-in">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title"><strong>Select Dates</strong></h4></div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group" data-aos="fade-up">
+                            <label class="control-label" for="from">From </label>
+                            <input class="form-control" type="date" id="from">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="to">To </label>
+                            <input class="form-control" type="date" id="to">
+                        </div>
+                        <input class="form-control" name="id" id="roomid" type="text">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" type="button" data-dismiss="modal">Close</button>
+                    <button class="btn btn-primary" type="button">Book </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.jquery.min.js"></script>
     <script src="/static/assets/js/Simple-Slider.js"></script>
+    <script>
+    function bookingClicked(id) {
+        document.getElementById("roomid").value = id;
+}
+    </script>
 {% endblock %}

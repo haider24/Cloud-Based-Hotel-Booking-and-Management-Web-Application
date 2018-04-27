@@ -57,7 +57,7 @@ class RoomType(models.Model):
     minibar = models.BooleanField(default=False, verbose_name='Mini Bar')
     laundaryService = models.BooleanField(default=False, verbose_name='Laundary Service')
     def __str__(self):
-        return self.type
+        return str(self.id)
 
 class Image(models.Model):
     #id = models.AutoField(primary_key=True)

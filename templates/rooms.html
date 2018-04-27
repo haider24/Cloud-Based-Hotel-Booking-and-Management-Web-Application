@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="container" style="background-color:#e5e5ff;">
+        <div class="intro">
+            <h2 class="text-center">Our Rooms</h2>
+            <p class="text-center">We have different kinds of rooms according to your requirements</p>
+        </div>
+        <div class="row articles">
+            {% for room in rooms %}
+            <div class="col-md-4 col-sm-6 item" style="margin-top:10px;outline:solid;outline-color:#4f86c3;">
+                <div class="swiper-container" style="height:200px;width:300px;">
+                    <div class="swiper-wrapper" style="height:inherit;">
+                        {% for image in images %}
+                            {% if image.roomType.id == room.id %}
+                        <div class="swiper-slide" style="height:inherit;width:inherit;">
+                             <img src="{{ image.image.url }}" style=" max-width:100%;max-height:100%;vertical-align:middle;">
+                        </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-prev" style="width:25px;height:22px;"></div>
+                    <div class="swiper-button-next" style="width:25px;height:22px;"></div>
+                </div>
+                <h4 class="name" style="text-align:center;">Single Bed</h4>
+                <h4 class="name" style="text-align:center;">Price: 2000PPKR</h4>
+                <p style="text-align:center;">Room with single bed equiped with wifi, LED</p>
+                <div style="text-align:center;">
+                    {% if room.roomService %}
+                    <div style="display:inline-block;margin:2px;"><i class="material-icons">room_service</i>
+                        <p>Room Service</p>
+                    </div>
+                    {% endif %}
+                {% if room.wifi %}
+                    <div style="display:inline-block;margin:2px;"><i class="material-icons" style="margin:10px;">wifi</i>
+                        <p>Wifi </p>
+                    </div>
+                {% endif %}
+                {% if room.freeBreakfast %}
+                    <div style="display:inline-block;margin:2px;"><i class="material-icons" style="margin:10px;">free_breakfast</i>
+                        <p>Breakfast </p>
+                    </div>
+                {% endif %}
+                {% if room.minibar %}
+                    <div style="display:inline-block;margin:2px;"><i class="material-icons" style="margin:10px;">local_bar</i>
+                        <p>Minibar </p>
+                    </div>
+                {% endif %}
+                {% if room.laundaryService %}
+                    <div style="display:inline-block;margin:2px;"><i class="material-icons" style="margin:10px;">local_laundry_service</i>
+                        <p>Laundary </p>
+                    </div>
+                {% endif %}
+                {% if room.airConditioning %}
+                    <div style="display:inline-block;margin:2px;"><i class="material-icons" style="margin:10px;">airplay</i>
+                        <p>Air Conditioning</p>
+                    </div>
+                {% endif %}
+                </div>
+                <div style="text-align:center;">
+                    <button class="btn btn-default" type="button" style="margin:auto;background-color:rgb(86,198,198);background-image:url(&quot;None&quot;);color:#ffffff;">Book Room</button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.jquery.min.js"></script>
+    <script src="/static/assets/js/Simple-Slider.js"></script>
+{% endblock %}

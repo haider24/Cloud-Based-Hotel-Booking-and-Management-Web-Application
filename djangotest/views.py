@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout, update_session_auth
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader, RequestContext
-from djangotest.models import Profile,Comment
+from djangotest.models import Profile,Comment,Room,RoomType,Image
 from django.contrib.auth.models import User
 
 
@@ -126,6 +126,19 @@ def changePassword(request):
         return redirect('profile')
 
 
+def test(request):
+    if request.method=="POST":
+        to=request.POST.get('to')
+        fro = request.POST.get('from')
+        print('')
+
+    return render(request,'test.html')
+
+def rooms(request):
+    allRooms=RoomType.objects.all()
+    allImages=Image.objects.all()
+    context={'rooms':allRooms,'images':allImages}
+    return render(request,'rooms.html',context)
 
 
 

@@ -46,8 +46,16 @@ def save_user_profile(sender, instance, **kwargs):
 
 
 class RoomType(models.Model):
+    id = models.AutoField(primary_key=True)
     type=models.CharField(max_length=100)
     price = models.PositiveIntegerField(validators=[MinValueValidator(1)],default=None)
+    description=models.CharField(max_length=200,default=None)
+    airConditioning = models.BooleanField(default=False, verbose_name='Air Conditioning')
+    wifi = models.BooleanField(default=False, verbose_name='WiFi')
+    roomService = models.BooleanField(default=False, verbose_name='Room Service')
+    freeBreakfast = models.BooleanField(default=False, verbose_name='Free Breakfast')
+    minibar = models.BooleanField(default=False, verbose_name='Mini Bar')
+    laundaryService = models.BooleanField(default=False, verbose_name='Laundary Service')
     def __str__(self):
         return self.type
 
@@ -62,11 +70,17 @@ class Image(models.Model):
 class Room(models.Model):
     id = models.AutoField(primary_key=True)
     type = models.ForeignKey(RoomType,on_delete=models.CASCADE,verbose_name='Room Type')
-    description=models.CharField(max_length=200,default=None)
     def __str__(self):
         return str(self.type)
     def price(self):
         return self.type.price
+
+class Booking(models.Model):
+    room=models.ForeignKey(Room,on_delete=models.CASCADE)
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    start=models.DateField(verbose_name='From')
+    end=models.DateField(verbose_name='To')
+    bill=models.IntegerField(default=0,validators=[MinValueValidator(1)])
 
 
 

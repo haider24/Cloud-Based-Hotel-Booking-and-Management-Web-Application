@@ -62,7 +62,7 @@
                     </div>
                 {% endif %}
         </div>
-        <form method="POST" action="/test/">
+        <form method="POST" action="/booking/">
             {% csrf_token %}
             <input type="text" name="roomid" value="{{ roomid }}" hidden />
             <input type="date" name="checkin" value="{{ checkin }}" hidden />

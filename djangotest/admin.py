@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.forms import ModelForm
 from django import forms
 
-from djangotest.models import Profile,Room,RoomType,Comment,Image
+from djangotest.models import Profile,Room,RoomType,Comment,Image,Booking
 
 # Register your models here.
 
@@ -33,3 +33,4 @@ admin.site.register(Room,RoomAdmin)
 admin.site.register(RoomType)
 admin.site.register(Comment,CommentAdmin)
 admin.site.register(Image)
+admin.site.register(Booking)

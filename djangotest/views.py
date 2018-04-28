@@ -204,3 +204,14 @@ def calculateDays(checkin,checkout):
     convertedCheckout = datetime.strptime(newCheckout, date_format)
     delta = convertedCheckout-convertedCheckin
     return delta.days
+
+def booking(request):
+    roomID=request.POST.get('roomid')
+    checkinDate=request.POST.get('checkin')
+    checkoutDate=request.POST.get('checkout')
+    room=Room.objects.get(id=roomID)
+    user=request.user
+    days=calculateDays(checkinDate,checkoutDate)
+    bill=room.type.price*days
+    booking=Booking.objects.create(user=user,room=room,checkin=checkinDate,checkout=checkoutDate,bill=bill)
+    return render(request,'test.html')

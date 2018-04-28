@@ -10,6 +10,7 @@
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 300px;
+    max-height: 230px;
   margin: auto;
   text-align: center;
   font-family: arial;
@@ -45,7 +46,7 @@ button:hover, a:hover {
     {% if user.profile.profilePicture is null %}
         <img id="profpic" src="/static/assets/img/profile.png" alt="John" style="width:100%;">
     {% else %}
-        <img id="profpic" src="{{ user.profile.profilePicture.url }}" alt="John" style="width:100%;height:100%;">
+        <img id="profpic" src="{{ user.profile.profilePicture.url }}" alt="John" style="width:100%;">
     {% endif %}
 
   <h1 id="profname">{{ user.first_name }}</h1>

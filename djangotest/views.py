@@ -188,10 +188,15 @@ def checkifAvailable(room,checkinDate,checkoutDate):
         return checkDates(roomBookings,checkinDate,checkoutDate)
 
 def checkDates(roomBookings,checkinDate,checkoutDate):
+    newCheckin = checkinDate.replace('-', '/')
+    newCheckout = checkoutDate.replace('-', '/')
+    date_format = "%Y/%m/%d"
+    convertedCheckin = datetime.strptime(newCheckin, date_format)
+    convertedCheckout = datetime.strptime(newCheckout, date_format)
     for booking in roomBookings:
-        if checkinDate>=booking.checkin and checkinDate<=booking.checkout:
+        if convertedCheckin>=booking.checkin and convertedCheckin<=booking.checkout:
             return False
-        elif checkoutDate>=booking.checkin and checkoutDate<booking.checkout:
+        elif convertedCheckout>=booking.checkin and convertedCheckout<booking.checkout:
             return  False
 
     return True

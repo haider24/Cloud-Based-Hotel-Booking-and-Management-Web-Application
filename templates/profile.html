@@ -40,10 +40,10 @@ button:hover, a:hover {
 
     <div style="text-align:center;padding:40px;background:url(&quot;/static/assets/img/hotel3.jpg&quot;)no-repeat;background-size:cover;">
 
-<div class="card" id="prof" style="background:#ffffff;margin-top:70px;">
+<div class="card" id="prof" style="background:#ffffff;margin-top:80px;">
 
     {% if user.profile.profilePicture is null %}
-        <img id="profpic" src="/static/assets/img/profile.png" alt="John" style="width:100%;">
+        <img id="profpic" src="/static/assets/img/profile.png" alt="John" style="width:100%;height:220px;">
     {% else %}
         <img id="profpic" src="{{ user.profile.profilePicture.url }}" alt="John" style="width:100%;height:220px;">
     {% endif %}
@@ -55,16 +55,16 @@ button:hover, a:hover {
 <p><button onclick="changePassword()">Change Password</button></p>
 </div>
 
-<div class="card" id="edit" hidden style="background:#ffffff;margin-top:30px;">
+<div class="card" id="edit" hidden style="background:#ffffff;margin-top:80px;">
 <form method="POST" enctype='multipart/form-data'>
 {% csrf_token %}
     {% if user.profile.profilePicture is null %}
         <a onclick="uploadImage()">
-        <img src="/static/assets/img/profile.png" id="editpic" alt="John" style="width:100%">
+        <img src="/static/assets/img/profile.png" id="editpic" alt="John" style="width:100%;height:220px;">
         </a>
     {% else %}
         <a onclick="uploadImage()">
-        <img src="{{ user.profile.profilePicture.url }}" id="editpic" alt="John" style="width:100%">
+        <img src="{{ user.profile.profilePicture.url }}" id="editpic" alt="John" style="width:100%;height:220px;">
         </a>
     {% endif %}
 
@@ -82,13 +82,13 @@ button:hover, a:hover {
 <p><button onclick="cancel()">Cancel</button></p>
 </div>
 
-    <div class="card" id="changepass" hidden style="background:#ffffff;margin-top:30px;">
+    <div class="card" id="changepass" hidden style="background:#ffffff;margin-top:80px;">
 <form method="POST" action="/changepassword/">
 {% csrf_token %}
     {% if user.profile.profilePicture is null %}
-        <img src="/static/assets/img/profile.png" id="editpic" alt="John" style="width:100%">
+        <img src="/static/assets/img/profile.png" id="editpic" alt="John" style="width:100%;height:220px;">
     {% else %}
-        <img src="{{ user.profile.profilePicture.url }}" id="editpic" alt="John" style="width:100%">
+        <img src="{{ user.profile.profilePicture.url }}" id="editpic" alt="John" style="width:100%;height:220px;">
     {% endif %}
 
   <h3><input type="Password" name="password" id="newpass" placeholder="New Password" required/></h3>

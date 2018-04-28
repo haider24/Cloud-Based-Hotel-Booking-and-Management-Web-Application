@@ -56,12 +56,27 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav navbar-right">
-                    <li>
+
+                  <li>
+                        <a href="/feedback">
+                            <i class="pe-7s-comment"></i>
+                            <p>Feedback</p>
+                        </a>
+                  </li>
+
+                  <li>
+                        <a href="/rooms">
+                            <i class="pe-7s-date"></i>
+                            <p>Book Room</p>
+                        </a>
+                  </li>
+
+                  <li>
                         <a href="#">
-                            <i class="pe-7s-mail">
-                                <span class="label">23</span>
+                            <i class="pe-7s-date">
+                                <span class="label">{{ request.session.userBookings }}</span>
                             </i>
-                            <p>Messages</p>
+                            <p>My Bookings</p>
                         </a>
                     </li>
                     <li class="dropdown">
@@ -71,7 +86,6 @@
                             </a>
                           <ul class="dropdown-menu">
                               <li><a href="/profile">My Profile</a></li>
-                            <li><a href="/feedback">Feedback</a></li>
                             <li class="divider"></li>
                             <li><a href="/logout">Logout</a></li>
                           </ul>

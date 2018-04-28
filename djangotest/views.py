@@ -27,6 +27,7 @@ def signin(request):
         else:
             login(request,user)
             request.session['booking']=False
+            request.session['userBookings']=getUserBookings(user)
             return HttpResponseRedirect('/profile')
     else:
         return render(request, 'login.html')
@@ -229,6 +230,7 @@ def booking(request):
     bill=room.type.price*days
     booking=Booking.objects.create(user=user,room=room,checkin=checkinDate,checkout=checkoutDate,bill=bill)
     request.session['booking'] = False
+    request.session['userBookings'] = getUserBookings(user)
     return render(request,'test.html')
 
 def cancelBooking(request):
@@ -236,3 +238,7 @@ def cancelBooking(request):
         return redirect('index')
     request.session['booking'] = False
     return redirect('rooms')
+
+def getUserBookings(user):
+    bookings=Booking.objects.filter(user__username=user.username)
+    return bookings.count()

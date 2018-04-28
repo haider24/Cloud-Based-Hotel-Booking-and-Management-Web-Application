@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div style="background-color:#e5e5ff;text-align:center;margin-top:200px;margin-bottom:20px;">
+        <div class="swiper-container" style="height:350px;width:612px;margin:auto;">
+            <div class="swiper-wrapper" style="height:inherit;">
+                {% for image in images %}
+                    {% if image.roomType.id == roomType.id %}
+                <div class="swiper-slide" style="height:inherit;width:inherit;">
+                   <img src="assets/img/hotel1.jpg"style=" width:100%;height:100%;object-fit:cover;">
+                </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev" style="width:25px;height:22px;"></div>
+            <div class="swiper-button-next" style="width:25px;height:22px;"></div>
+        </div>
+        <div style="text-align:center;">
+            <h1>{{ roomType.type }}</h1>
+            <p>{{ roomType.description }}</p>
+            <h4>Checkin: {{ checkin }}</h4>
+            <h4>Checkin: {{ checkout }}</h4>
+            <h3>Days: {{ days }}</h3>
+            <h1>Total Price: {{ bill }}</h1></div>
+        <div style="text-align:center;">
+            {% if roomType.roomService == True %}
+                    <div style="display:inline-block;margin:5px;"><i class="material-icons">room_service</i>
+                        <p>Room Service</p>
+                    </div>
+                    {% endif %}
+                {% if roomType.wifi == True %}
+                    <div style="display:inline-block;margin:5px;"><i class="material-icons" style="margin:10px;">wifi</i>
+                        <p>Wifi </p>
+                    </div>
+                {% endif %}
+                {% if roomType.freeBreakfast == True %}
+                    <div style="display:inline-block;margin:5px;"><i class="material-icons" style="margin:10px;">free_breakfast</i>
+                        <p>Breakfast </p>
+                    </div>
+                {% endif %}
+                {% if roomType.minibar == True %}
+                    <div style="display:inline-block;margin:5px;"><i class="material-icons" style="margin:10px;">local_bar</i>
+                        <p>Minibar </p>
+                    </div>
+                {% endif %}
+                {% if roomType.laundaryService == True %}
+                    <div style="display:inline-block;margin:5px;"><i class="material-icons" style="margin:10px;">local_laundry_service</i>
+                        <p>Laundary </p>
+                    </div>
+                {% endif %}
+                {% if roomType.airConditioning == True %}
+                    <div style="display:inline-block;margin:5px;"><i class="material-icons" style="margin:10px;">airplay</i>
+                        <p>Air Conditioning</p>
+                    </div>
+                {% endif %}
+                {% if roomType.poolFacility == True %}
+                    <div style="display:inline-block;margin:5px;"><i class="material-icons" style="margin:10px;">pool</i>
+                        <p>Pool Facility</p>
+                    </div>
+                {% endif %}
+        </div>
+        <form method="POST" action="/test/">
+            {% csrf_token %}
+            <input type="text" name="roomid" value="{{ roomid }}" hidden />
+            <input type="date" name="checkin" value="{{ checkin }}" hidden />
+            <input type="date" name="checkout" value="{{ checkout }}" hidden />
+            <button class="btn btn-default" type="submit" style="margin:auto;background-image:url(&quot;None&quot;);color:#ffffff;background-color:rgb(86,198,198);margin-bottom:20px;">Confirm Booking</button>
+        </form>
+    </div>
+
+
+{% endblock %}

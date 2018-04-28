@@ -56,6 +56,7 @@ class RoomType(models.Model):
     freeBreakfast = models.BooleanField(default=False, verbose_name='Free Breakfast')
     minibar = models.BooleanField(default=False, verbose_name='Mini Bar')
     laundaryService = models.BooleanField(default=False, verbose_name='Laundary Service')
+    poolFacility = models.BooleanField(default=False,verbose_name='Pool Facility')
     def __str__(self):
         return str(self.id)
 
@@ -78,8 +79,8 @@ class Room(models.Model):
 class Booking(models.Model):
     room=models.ForeignKey(Room,on_delete=models.CASCADE)
     user=models.ForeignKey(User,on_delete=models.CASCADE)
-    start=models.DateField(verbose_name='From')
-    end=models.DateField(verbose_name='To')
+    checkin=models.DateField(verbose_name='Checkin',default=None)
+    checkout=models.DateField(verbose_name='Checkout',default=None)
     bill=models.IntegerField(default=0,validators=[MinValueValidator(1)])
 
 

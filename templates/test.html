@@ -1,55 +1,12 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>homepage</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
-    <link rel="stylesheet" href="assets/css/Article-List.css">
-    <link rel="stylesheet" href="assets/css/Features-Blue.css">
-    <link rel="stylesheet" href="assets/css/Footer-Clean.css">
-    <link rel="stylesheet" href="assets/css/Footer-Dark.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/css/lightbox.min.css">
-    <link rel="stylesheet" href="assets/css/Lightbox-Gallery.css">
-    <link rel="stylesheet" href="assets/css/Login-Form-Dark.css">
-    <link rel="stylesheet" href="assets/css/Navigation-with-Button1.css">
-    <link rel="stylesheet" href="assets/css/Registration-Form-with-Photo.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/Team-Boxed.css">
-    <link rel="stylesheet" href="assets/css/Testimonials.css">
+    <meta charset="UTF-8">
+    <title>Test</title>
 </head>
-
 <body>
-    <div style="text-align:center;padding:40px;background:url(&quot;assets/img/plane.jpg&quot;)no-repeat;background-size:cover;">
-        <div class="jumbotron" style="border-radius:20px;padding:40px;background:rgba(255,255,255,0.75);margin-top:100px;">
-            <form method="POST">
-                {% csrf_token %}
-
-                <div class="row" style="margin-top:20px;">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label">Departure Date</label>
-                            <input class="form-control" type="date" name="from" style="width:130px;height:30px;margin:auto;">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label">Arrival Date</label>
-                            <input class="form-control" type="date" name="to" style="width:130px;height:30px;margin:auto;">
-                        </div>
-                    </div>
-                </div>
-
-                <button class="btn btn-default" type="submit" style="margin-top:20px;width:243px;"><strong>Search Flights</strong></button>
-            </form>
-        </div>
-    </div>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
-    <script src="assets/js/myjs.js"></script>
+<h4>{{ roomid }}</h4>
+<h4>checkin: {{ checkin }}</h4>
+<h4> checkout: {{ checkout }}</h4>
 </body>
-
 </html>

@@ -22,7 +22,7 @@ from . import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.index, name='index'),
+    url(r'^$', views.test, name='index'),
     url(r'^login/',views.signin,name='login'),
     url(r'^logout/',views.signout,name='logout'),
     url(r'^signup/',views.signup,name='signup'),
@@ -31,5 +31,6 @@ urlpatterns = [
     url(r'^rating/',views.rating,name='rating'),
     url(r'^changepassword/',views.changePassword,name='changePassword'),
     url(r'^rooms/',views.rooms,name='rooms'),
+    url(r'^test/',views.test,name='test'),
 
 ]

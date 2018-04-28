@@ -3,8 +3,9 @@ from django.contrib.auth import authenticate, login, logout, update_session_auth
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader, RequestContext
-from djangotest.models import Profile,Comment,Room,RoomType,Image
+from djangotest.models import Profile,Comment,Room,RoomType,Image,Booking
 from django.contrib.auth.models import User
+from datetime import datetime
 
 
 def index(request):
@@ -127,19 +128,77 @@ def changePassword(request):
 
 
 def test(request):
-    if request.method=="POST":
-        to=request.POST.get('to')
-        fro = request.POST.get('from')
-        print('')
+    roomid=request.POST.get('roomid')
+    checkin = request.POST.get('checkin')
+    checkout = request.POST.get('checkout')
+    return render(request,'test.html',{'checkin':checkin,'checkout':checkout})
+    # if request.method=="POST":
+    #     to=request.POST.get('to')
+    #     fro = request.POST.get('from')
+    #     nfro=fro.replace('-','/')
+    #     nto=to.replace('-','/')
+    #     date_format = "%Y/%m/%d"
+    #     checkout=datetime.strptime(nto,date_format)
+    #     checkin = datetime.strptime(nfro,date_format)
+    #     delta=checkout-checkin
+    #     nd=delta.days
+    #     print(nd)
 
     return render(request,'test.html')
 
 def rooms(request):
-    allRooms=RoomType.objects.all()
-    allImages=Image.objects.all()
-    context={'rooms':allRooms,'images':allImages}
-    return render(request,'rooms.html',context)
+    if request.method=="POST":
+        typeID=request.POST.get('id')
+        checkinDate=request.POST.get('checkin')
+        checkoutDate = request.POST.get('checkout')
+        room=findAvailableRooms(typeID,checkinDate,checkoutDate)
+        if room ==None:
+            allRooms = RoomType.objects.all()
+            allImages = Image.objects.all()
+            context = {'rooms': allRooms, 'images': allImages,'message':'Room not available on selected dates, please try different room or select different dates'}
+            return render(request, 'rooms.html', context)
+        else:
+            allImages = Image.objects.all()
+            roomType=RoomType.objects.get(id=typeID)
+            days=calculateDays(checkinDate,checkoutDate)
+            bill=days*roomType.price
+            context={'images':allImages,'checkin':checkinDate,'checkout':checkoutDate,'roomType':roomType,'roomid':room.id,'days':days,'bill':bill}
+            return render(request,'confirmbooking.html')
+    else:
+        allRooms = RoomType.objects.all()
+        allImages = Image.objects.all()
+        context = {'rooms': allRooms, 'images': allImages}
+        return render(request, 'rooms.html', context)
 
 
+def findAvailableRooms(typeID,checkinDate,checkoutDate):
+    allRooms=Room.objects.filter(type__id=typeID)
+    for room in allRooms:
+        if checkifAvailable(room,checkinDate,checkoutDate)==True:
+            return room
+    return None
 
+def checkifAvailable(room,checkinDate,checkoutDate):
+    roomBookings=Booking.objects.filter(room__id=room.id)
+    if len(roomBookings==0):
+        return True
+    else:
+        return checkDates(roomBookings,checkinDate,checkoutDate)
 
+def checkDates(roomBookings,checkinDate,checkoutDate):
+    for booking in roomBookings:
+        if checkinDate>=booking.checkin and checkinDate<=booking.checkout:
+            return False
+        elif checkoutDate>=booking.checkin and checkoutDate<booking.checkout:
+            return  False
+
+    return True
+
+def calculateDays(checkin,checkout):
+    newCheckin = checkin.replace('-', '/')
+    newCheckout = checkout.replace('-', '/')
+    date_format = "%Y/%m/%d"
+    convertedCheckin = datetime.strptime(newCheckin, date_format)
+    convertedCheckout = datetime.strptime(newCheckout, date_format)
+    delta = convertedCheckout-convertedCheckin
+    return delta.days

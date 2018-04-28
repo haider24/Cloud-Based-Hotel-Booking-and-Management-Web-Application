@@ -48,6 +48,8 @@ button:hover, a:hover {
         <img id="profpic" src="{{ user.profile.profilePicture.url }}" alt="John" style="width:100%;height:220px;">
     {% endif %}
 
+  <div class="content"><h5 style="color: #00ff00">{{ message }}</h5></div>
+
   <h1 id="profname">{{ user.first_name }}</h1>
   <p class="title" id="profemail">{{ user.email }}</p>
 
@@ -133,6 +135,13 @@ function PreviewImage() {
             document.getElementById("editpic").src = oFREvent.target.result;
         };
     };
+$(document).ready(function() {
+    setTimeout(function() {
+        $(".content").fadeOut(1500);
+    }, 5000);
+
+
+});
 </script>
 
 {% endblock %}

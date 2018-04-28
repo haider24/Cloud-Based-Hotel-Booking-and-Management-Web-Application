@@ -84,7 +84,7 @@ def profile(request):
         if newImage is not None:
             user.profile.profilePicture = newImage
         user.save()
-        return HttpResponseRedirect('/profile')
+        return render(request,'profile.html',{'message':'Profile updated Successfully'})
     else:
         return render(request, 'profile.html')
 
@@ -127,7 +127,7 @@ def changePassword(request):
         user.set_password(newPassword)
         user.save()
         update_session_auth_hash(request, user)
-        return redirect('profile')
+        return render(request, 'profile.html',{'message':'Password changed Successfully'})
 
 
 def test(request):

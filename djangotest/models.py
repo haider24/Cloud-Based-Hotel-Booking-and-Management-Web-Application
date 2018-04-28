@@ -58,7 +58,7 @@ class RoomType(models.Model):
     laundaryService = models.BooleanField(default=False, verbose_name='Laundary Service')
     poolFacility = models.BooleanField(default=False,verbose_name='Pool Facility')
     def __str__(self):
-        return str(self.id)
+        return self.type
 
 class Image(models.Model):
     #id = models.AutoField(primary_key=True)

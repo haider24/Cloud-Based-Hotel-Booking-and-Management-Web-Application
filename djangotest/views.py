@@ -173,7 +173,7 @@ def rooms(request):
 
 def findAvailableRooms(typeID,checkinDate,checkoutDate):
     allRooms=Room.objects.filter(type__id=typeID)
-    if len(allRooms)==0:
+    if not allRooms:
         return None
     for room in allRooms:
         if checkifAvailable(room,checkinDate,checkoutDate)==True:
@@ -182,7 +182,7 @@ def findAvailableRooms(typeID,checkinDate,checkoutDate):
 
 def checkifAvailable(room,checkinDate,checkoutDate):
     roomBookings=Booking.objects.filter(room__id=room.id)
-    if len(roomBookings==0):
+    if not roomBookings:
         return True
     else:
         return checkDates(roomBookings,checkinDate,checkoutDate)

@@ -163,7 +163,7 @@ def rooms(request):
             days=calculateDays(checkinDate,checkoutDate)
             bill=days*roomType.price
             context={'images':allImages,'checkin':checkinDate,'checkout':checkoutDate,'roomType':roomType,'roomid':room.id,'days':days,'bill':bill}
-            return render(request,'confirmbooking.html')
+            return render(request,'confirmbooking.html',context)
     else:
         allRooms = RoomType.objects.all()
         allImages = Image.objects.all()

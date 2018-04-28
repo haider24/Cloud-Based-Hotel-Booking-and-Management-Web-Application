@@ -131,7 +131,7 @@ def test(request):
     roomid=request.POST.get('roomid')
     checkin = request.POST.get('checkin')
     checkout = request.POST.get('checkout')
-    return render(request,'test.html',{'checkin':checkin,'checkout':checkout})
+    return render(request,'test.html',{'checkin':checkin,'checkout':checkout,'roomid':roomid})
     # if request.method=="POST":
     #     to=request.POST.get('to')
     #     fro = request.POST.get('from')

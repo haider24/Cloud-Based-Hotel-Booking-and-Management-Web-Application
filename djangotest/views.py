@@ -5,7 +5,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader, RequestContext
 from djangotest.models import Profile,Comment,Room,RoomType,Image,Booking
 from django.contrib.auth.models import User
-from datetime import datetime
+from datetime import datetime, date
 
 
 def index(request):
@@ -188,11 +188,10 @@ def checkifAvailable(room,checkinDate,checkoutDate):
         return checkDates(roomBookings,checkinDate,checkoutDate)
 
 def checkDates(roomBookings,checkinDate,checkoutDate):
-    newCheckin = checkinDate.replace('-', '/')
-    newCheckout = checkoutDate.replace('-', '/')
-    date_format = "%Y/%m/%d"
-    convertedCheckin = datetime.strptime(newCheckin, date_format)
-    convertedCheckout = datetime.strptime(newCheckout, date_format)
+    year, month, day = checkinDate.split("-")
+    convertedCheckin = date(int(year), int(month), int(day))
+    year, month, day = checkoutDate.split("-")
+    convertedCheckout = date(int(year), int(month), int(day))
     for booking in roomBookings:
         if convertedCheckin>=booking.checkin and convertedCheckin<=booking.checkout:
             return False

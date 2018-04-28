@@ -39,12 +39,11 @@ button:hover, a:hover {
 </style>
 
     <div style="text-align:center;padding:40px;background:url(&quot;/static/assets/img/hotel3.jpg&quot;)no-repeat;background-size:cover;">
-        <h2>User Profile</h2>
 
 <div class="card" id="prof" style="background:#ffffff;margin-top:30px;">
 
     {% if user.profile.profilePicture is null %}
-        <img id="profpic" src="/static/assets/img/profile.png" alt="John" style="width:100%">
+        <img id="profpic" src="/static/assets/img/profile.png" alt="John" style="width:100%;height:100%">
     {% else %}
         <img id="profpic" src="{{ user.profile.profilePicture.url }}" alt="John" style="width:100%">
     {% endif %}

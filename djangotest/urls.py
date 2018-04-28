@@ -32,6 +32,7 @@ urlpatterns = [
     url(r'^changepassword/',views.changePassword,name='changePassword'),
     url(r'^rooms/',views.rooms,name='rooms'),
     url(r'^booking/',views.booking,name='booking'),
+    url(r'^cancel/', views.cancelBooking, name='cancelBooking'),
     url(r'^test/',views.test,name='test'),
 
 ]

@@ -26,6 +26,7 @@ def signin(request):
             return render(request,'login.html',{'message':'Invalid Username or Password'})
         else:
             login(request,user)
+            request.session['booking']=False
             return HttpResponseRedirect('/profile')
     else:
         return render(request, 'login.html')
@@ -63,6 +64,7 @@ def signup(request):
             user.profile.profilePicture=image
         user.save()
         login(request,user)
+        request.session['booking'] = False
         return redirect('profile')
         #return HttpResponseRedirect('/profile')
     else:
@@ -147,6 +149,8 @@ def test(request):
     return render(request,'test.html')
 
 def rooms(request):
+    if not request.user.is_authenticated:
+        return redirect('index')
     if request.method=="POST":
         typeID=request.POST.get('id')
         checkinDate=request.POST.get('checkin')
@@ -162,6 +166,7 @@ def rooms(request):
             roomType=RoomType.objects.get(id=typeID)
             days=calculateDays(checkinDate,checkoutDate)
             bill=days*roomType.price
+            request.session['booking'] = True
             context={'images':allImages,'checkin':checkinDate,'checkout':checkoutDate,'roomType':roomType,'roomid':room.id,'days':days,'bill':bill}
             return render(request,'confirmbooking.html',context)
     else:
@@ -210,6 +215,11 @@ def calculateDays(checkin,checkout):
     return delta.days
 
 def booking(request):
+    if not request.user.is_authenticated:
+        return redirect('index')
+    booinginProgress=request.session['booking']
+    if not booinginProgress:
+        return redirect('index')
     roomID=request.POST.get('roomid')
     checkinDate=request.POST.get('checkin')
     checkoutDate=request.POST.get('checkout')
@@ -218,4 +228,11 @@ def booking(request):
     days=calculateDays(checkinDate,checkoutDate)
     bill=room.type.price*days
     booking=Booking.objects.create(user=user,room=room,checkin=checkinDate,checkout=checkoutDate,bill=bill)
+    request.session['booking'] = False
     return render(request,'test.html')
+
+def cancelBooking(request):
+    if not request.user.is_authenticated:
+        return redirect('index')
+    request.session['booking'] = False
+    return redirect('rooms')

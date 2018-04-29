@@ -67,9 +67,9 @@ class Image(models.Model):
     image = CloudinaryField('image')
     def __str__(self):
         return self.image.url
-    def showImage(self):
+    def Image(self):
         return format_html('<div style="height:150px;width:150px;"><img src="{}" style="width:100%;height:100%;object-fit:cover;"/></div>'.format(self.image.url))
-    def showRoomType(self):
+    def RoomType(self):
         return self.roomType.type
 
 

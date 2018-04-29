@@ -44,7 +44,7 @@ class UserControlAdmin(UserAdmin):
         return False
 
 class ImageAdmin(admin.ModelAdmin):
-    list_display = ('showImage','roomType')
+    list_display = ('showImage','showRoomType')
 
 
 #admin.site.register(Profile,ProfileAdmin)

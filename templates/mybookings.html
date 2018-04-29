@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <title>My Bookings</title>
+
+
+    <div class="container" style="background-color:#e5e5ff;">
+
+    {% if not bookings %}
+    <div class="intro">
+            <h1 class="text-center" style="color:#4f86c3;"><strong>You currently have no Bookings</strong>></h1></div>
+    {% else %}
+        <div class="intro">
+            <h2 class="text-center">Your Bookings</h2></div>
+        {% for booking in bookings %}
+        <div class="row articles" style="margin-top:10px;outline:solid;outline-color:#4f86c3;">
+            <div class="col-md-4 col-sm-6 item">
+                <div class="swiper-container" style="height:200px;width:300px;">
+                    <div class="swiper-wrapper" style="height:inherit;">
+
+                        {% for image in images %}
+                            {% if image.roomType.id == booking.room.type.id %}
+                        <div class="swiper-slide" style=" height:inherit;width:inherit;"">
+                          <img src="{{ image.image.url }}" style="height: 100%; width: 100%; object-fit: cover;">
+                        </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-prev" style="width:25px;height:22px;"></div>
+                    <div class="swiper-button-next" style="width:25px;height:22px;"></div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 item">
+                <h4 class="name" style="text-align:center;">{{ booking.room.type }}</h4>
+                <h4 class="name" style="text-align:center;">{{ booking.room.type.price }}</h4>
+                <p style="text-align:center;">{{ booking.room.type.description }}</p>
+                <h4 class="name" style="text-align:center;">Checkin: {{ booking.checkin }}</h4>
+                <h4 class="name" style="text-align:center;">Checkout: {{ booking.checkout }}</h4>
+                <h4 class="name" style="text-align:center;">Total Bill: {{ booking.checkout }}</h4></div>
+        </div>
+        {% endfor %}
+    {% endif %}
+    </div>
+
+
+{% endblock %}

@@ -242,3 +242,11 @@ def cancelBooking(request):
 def getUserBookings(user):
     bookings=Booking.objects.filter(user__username=user.username)
     return bookings.count()
+
+def myBookings(request):
+    if not request.user.is_authenticated:
+        return redirect('index')
+    user=request.user
+    bookings = Booking.objects.filter(user__username=user.username)
+    images=Image.objects.all()
+    return render(request,'mybookings.html',{'bookings':bookings,'images':images})

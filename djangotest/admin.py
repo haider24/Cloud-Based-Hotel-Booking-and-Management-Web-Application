@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.forms import ModelForm
 from django import forms
 from django.contrib.auth.models import User
+from django.contrib.auth.admin import UserAdmin
 
 from djangotest.models import Profile,Room,RoomType,Comment,Image,Booking
 
@@ -35,10 +36,10 @@ class BookingAdmin(admin.ModelAdmin):
     def has_add_permission(self, request):
         return False
 
-class UserAdmin(admin.ModelAdmin):
-    def has_change_permission(self, request, obj=None):
-        return False
+class UserControlAdmin(UserAdmin):
     def has_add_permission(self, request):
+        return False
+    def has_change_permission(self, request, obj=None):
         return False
 
 #admin.site.register(Profile,ProfileAdmin)

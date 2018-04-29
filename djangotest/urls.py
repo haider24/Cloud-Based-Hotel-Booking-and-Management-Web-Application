@@ -33,7 +33,7 @@ urlpatterns = [
     url(r'^rooms/',views.rooms,name='rooms'),
     url(r'^booking/',views.booking,name='booking'),
     url(r'^cancel/', views.cancelBooking, name='cancelBooking'),
-    url(r'^mybookings/', views.cancelBooking, name='myBookings'),
+    url(r'^mybookings/', views.myBookings, name='myBookings'),
     url(r'^test/',views.test,name='test'),
 
 ]

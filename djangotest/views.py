@@ -33,6 +33,8 @@ def signin(request):
         return render(request, 'login.html')
 
 def signout(request):
+    if not request.user.is_authenticated:
+        return redirect('index')
     logout(request)
     return redirect('index')
 

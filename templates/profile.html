@@ -58,7 +58,7 @@ button:hover, a:hover {
 </div>
 
 <div class="card" id="edit" hidden style="background:#ffffff;margin-top:80px;">
-<form method="POST" enctype='multipart/form-data'>
+<form method="POST" action="/profile/" enctype='multipart/form-data'>
 {% csrf_token %}
     {% if user.profile.profilePicture is null %}
         <a onclick="uploadImage()">
@@ -73,12 +73,6 @@ button:hover, a:hover {
   <input type="file" name="image" onchange="PreviewImage()" accept="image/*" id="imageinput" style="display: none">
   <h3><input id="editname" type="text" name="name" value="{{ user.first_name }}" placeholder="Name" required/></h3>
   <h3><input id="editemail" type="Email" name="email" value="{{ user.email }}" placeholder="Email" required/></h3>
-{# <table style="width:100%">#}
-{#  <tr>#}
-{#    <td><p><button type="submit">Save</button></p></td>#}
-{#    <td><p><button onclick="cancel()">Cancel</button></p></td>#}
-{#  </tr>#}
-{#</table>#}
 <p><button type="submit">Save</button></p>
 </form>
 <p><button onclick="cancel()">Cancel</button></p>

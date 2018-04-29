@@ -28,6 +28,7 @@ class RoomAdmin(admin.ModelAdmin):
 
 class CommentAdmin(admin.ModelAdmin):
     list_display =('comment','customername','customeremail')
+    list_display_links = None
 
 class BookingAdmin(admin.ModelAdmin):
     list_display = ('Room','RoomNumber','User','Checkin','Checkout','Bill')
@@ -42,12 +43,15 @@ class UserControlAdmin(UserAdmin):
     def has_add_permission(self, request):
         return False
 
+class ImageAdmin(admin.ModelAdmin):
+    list_display = ('showImage','roomType')
+
 
 #admin.site.register(Profile,ProfileAdmin)
 admin.site.register(Room,RoomAdmin)
 admin.site.register(RoomType)
 admin.site.register(Comment,CommentAdmin)
-admin.site.register(Image)
+admin.site.register(Image,ImageAdmin)
 admin.site.register(Booking,BookingAdmin)
 admin.site.unregister(User)
 admin.site.register(User,UserControlAdmin)

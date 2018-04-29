@@ -5,6 +5,7 @@ import cloudinary
 from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator
 from django.dispatch import receiver
+from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 from django.core.validators import MaxValueValidator, MinValueValidator
 
@@ -66,6 +67,10 @@ class Image(models.Model):
     image = CloudinaryField('image')
     def __str__(self):
         return self.image.url
+    def showImage(self):
+        return format_html('<img src="{}" />'.format(self.image.url))
+    def roomType(self):
+        return self.roomType.type
 
 
 class Room(models.Model):

@@ -80,6 +80,9 @@ def profile(request):
         newName=request.POST.get('name')
         newEmail=request.POST.get('email')
         newImage=request.FILES.get('image')
+        querySet=User.objects.filter(email=newEmail)
+        if not querySet.count()==0:
+            return render(request, 'profile.html', {'errormessage': 'An account with given Email already exists'})
         user = request.user
         user.email=newEmail
         user.first_name=newName

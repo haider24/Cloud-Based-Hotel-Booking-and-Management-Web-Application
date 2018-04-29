@@ -49,6 +49,7 @@ button:hover, a:hover {
     {% endif %}
 
 <div id="notification" style="text-align:center;"><h4 style="color:#00ff00;">{{ message }}</h4></div>
+<div id="errornotification" style="text-align:center;"><h4 style="color:#ff0000;">{{ errormessage }}</h4></div>
 
   <h1 id="profname">{{ user.first_name }}</h1>
   <p class="title" id="profemail">{{ user.email }}</p>
@@ -131,6 +132,10 @@ function PreviewImage() {
     };
 setTimeout(function() {
         document.getElementById("notification").hidden=true;
+    }, 4000);
+
+setTimeout(function() {
+        document.getElementById("errornotification").hidden=true;
     }, 4000);
 </script>
 

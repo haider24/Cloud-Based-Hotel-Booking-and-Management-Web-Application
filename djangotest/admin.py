@@ -29,6 +29,8 @@ class RoomAdmin(admin.ModelAdmin):
 class CommentAdmin(admin.ModelAdmin):
     list_display =('comment','customername','customeremail')
     list_display_links = None
+    def has_add_permission(self, request):
+        return False
 
 class BookingAdmin(admin.ModelAdmin):
     list_display = ('Room','RoomNumber','User','Checkin','Checkout','Bill')

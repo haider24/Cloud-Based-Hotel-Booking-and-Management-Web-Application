@@ -5,7 +5,7 @@
     <title>My Bookings</title>
 
 
-    <div class="container" style="background-color:#e5e5ff;margin-top:80px;margin-bottom:80px;">
+    <div class="container" style="background-color:#e5e5ff;margin-top:100px;margin-bottom:80px;">
 
     {% if not bookings %}
     <div class="intro">
@@ -34,12 +34,12 @@
                 </div>
             </div>
             <div class="col-md-4 col-sm-6 item">
-                <h4 class="name" style="text-align:center;">Room: {{ booking.room.type }}</h4>
-                <h4 class="name" style="text-align:center;">Price/Night: {{ booking.room.type.price }}</h4>
+                <h4 class="name" style="text-align:center;"><strong>Room: </strong>{{ booking.room.type }}</h4>
+                <h4 class="name" style="text-align:center;"><strong>Price/Night: </strong>{{ booking.room.type.price }}</h4>
                 <p style="text-align:center;">{{ booking.room.type.description }}</p>
-                <h4 class="name" style="text-align:center;">Checkin: {{ booking.checkin }}</h4>
-                <h4 class="name" style="text-align:center;">Checkout: {{ booking.checkout }}</h4>
-                <h4 class="name" style="text-align:center;">Total Bill: {{ booking.checkout }}</h4></div>
+                <h4 class="name" style="text-align:center;"><strong>Checkin: </strong>{{ booking.checkin }}</h4>
+                <h4 class="name" style="text-align:center;"><strong>Checkout: </strong>{{ booking.checkout }}</h4>
+                <h4 class="name" style="text-align:center;"><strong>Total Bill: </strong>{{ booking.checkout }}</h4></div>
         </div>
         {% endfor %}
     {% endif %}

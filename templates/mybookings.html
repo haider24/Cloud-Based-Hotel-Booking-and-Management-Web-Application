@@ -5,7 +5,7 @@
     <title>My Bookings</title>
 
 
-    <div class="container" style="background-color:#e5e5ff;margin-top:100px;margin-bottom:80px;">
+    <div class="container" style="background-color:#e5e5ff;margin-top:120px;margin-bottom:80px;">
 
     {% if not bookings %}
     <div class="intro">
@@ -13,7 +13,7 @@
     {% else %}
         <div class="intro">
         <h1 style="color:#00ff00"><strong>{{ message }}</strong></h1>
-            <h2 class="text-center">Your Bookings</h2></div>
+            <h2 class="text-center" style="color:#4f86c3;"><strong>Your Bookings</strong></h2></div>
         {% for booking in bookings %}
         <div class="row articles" style="margin-top:10px;outline:solid;outline-color:#4f86c3;">
             <div class="col-md-4 col-sm-6 item">

@@ -51,7 +51,7 @@ admin.site.register(Comment,CommentAdmin)
 admin.site.register(Image)
 admin.site.register(Booking,BookingAdmin)
 admin.site.unregister(User)
-admin.site.register(User,UserAdmin)
+admin.site.register(User,UserControlAdmin)
 
 admin.site.site_header = 'Cloud Hotel Adminsitration'
 admin.site.site_title = 'Cloud Hotel Administration'

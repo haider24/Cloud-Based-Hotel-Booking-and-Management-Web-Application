@@ -68,7 +68,7 @@ class Image(models.Model):
     def __str__(self):
         return self.image.url
     def showImage(self):
-        return format_html('<img src="{}" />'.format(self.image.url))
+        return format_html('<div style="height:150px;width:150px;"><img src="{}" style="width:100%;height:100%;object-fit:cover;"/></div>'.format(self.image.url))
     def showRoomType(self):
         return self.roomType.type
 

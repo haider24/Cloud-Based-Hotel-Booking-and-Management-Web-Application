@@ -233,7 +233,9 @@ def booking(request):
     booking=Booking.objects.create(user=user,room=room,checkin=checkinDate,checkout=checkoutDate,bill=bill)
     request.session['booking'] = False
     request.session['userBookings'] = getUserBookings(user)
-    return render(request,'test.html')
+    bookings = Booking.objects.filter(user__username=user.username)
+    images = Image.objects.all()
+    return render(request, 'mybookings.html', {'bookings': bookings, 'images': images,'message':'Booking Successful!'})
 
 def cancelBooking(request):
     if not request.user.is_authenticated:

@@ -31,18 +31,17 @@ class CommentAdmin(admin.ModelAdmin):
 
 class BookingAdmin(admin.ModelAdmin):
     list_display = ('Room','RoomNumber','User','Checkin','Checkout','Bill')
-    def has_change_permission(self, request, obj=None):
-        return False
+    list_display_links = None
+
     def has_add_permission(self, request):
         return False
-    def has_delete_permission(self, request, obj=None):
-        return True
+
 
 class UserControlAdmin(UserAdmin):
+    list_display_links = None
     def has_add_permission(self, request):
         return False
-    def has_change_permission(self, request, obj=None):
-        return False
+
 
 #admin.site.register(Profile,ProfileAdmin)
 admin.site.register(Room,RoomAdmin)

@@ -12,7 +12,7 @@
             <h1 class="text-center" style="color:#4f86c3;"><strong>You currently have no Bookings</strong>></h1></div>
     {% else %}
         <div class="intro">
-        <h1 style="color:#00ff00"><strong>{{ message }}</strong></h1>
+        <h1 style="color:#00ff00" id="notification"><strong>{{ message }}</strong></h1>
             <h2 class="text-center" style="color:#4f86c3;"><strong>Your Bookings</strong></h2></div>
         {% for booking in bookings %}
         <div class="row articles" style="margin-top:10px;outline:solid;outline-color:#4f86c3;">
@@ -45,5 +45,9 @@
     {% endif %}
     </div>
 
-
+<script>
+setTimeout(function() {
+        document.getElementById("notification").hidden=true;
+    }, 4000);
+</script>
 {% endblock %}

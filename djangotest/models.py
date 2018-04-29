@@ -69,7 +69,7 @@ class Image(models.Model):
 
 
 class Room(models.Model):
-    id = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True, verbose_name='Room Number')
     type = models.ForeignKey(RoomType,on_delete=models.CASCADE,verbose_name='Room Type')
     def __str__(self):
         return str(self.type)
@@ -82,6 +82,26 @@ class Booking(models.Model):
     checkin=models.DateField(verbose_name='Checkin',default=None)
     checkout=models.DateField(verbose_name='Checkout',default=None)
     bill=models.IntegerField(default=0,validators=[MinValueValidator(1)])
+
+    def _str_(self):
+        return self.room.type.type
+
+    def Room(self):
+        return self.room.type.type
+
+    def RoomNumber(self):
+        return str(self.room.id)
+
+    def User(self):
+        return self.user.first_name
+    def Checkin(self):
+        return self.checkin
+
+    def Checkout(self):
+        return self.checkout
+
+    def Bill(self):
+        return str(self.bill)
 
 
 

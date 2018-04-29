@@ -30,6 +30,10 @@ class CommentAdmin(admin.ModelAdmin):
 
 class BookingAdmin(admin.ModelAdmin):
     list_display = ('Room','RoomNumber','User','Checkin','Checkout','Bill')
+    def has_change_permission(self, request, obj=None):
+        return False
+    def has_add_permission(self, request):
+        return False
 
 class UserAdmin(admin.ModelAdmin):
     def has_change_permission(self, request, obj=None):
@@ -43,6 +47,7 @@ admin.site.register(RoomType)
 admin.site.register(Comment,CommentAdmin)
 admin.site.register(Image)
 admin.site.register(Booking,BookingAdmin)
+admin.site.unregister(User)
 admin.site.register(User,UserAdmin)
 
 admin.site.site_header = 'Cloud Hotel Adminsitration'

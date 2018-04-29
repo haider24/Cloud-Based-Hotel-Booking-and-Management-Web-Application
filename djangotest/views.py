@@ -68,6 +68,7 @@ def signup(request):
         user.save()
         login(request,user)
         request.session['booking'] = False
+        request.session['userBookings'] = getUserBookings(user)
         return redirect('profile')
         #return HttpResponseRedirect('/profile')
     else:

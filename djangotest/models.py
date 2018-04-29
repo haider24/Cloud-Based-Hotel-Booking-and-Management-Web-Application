@@ -113,7 +113,7 @@ class Comment(models.Model):
         return str(self.comment)
 
     def customername(self):
-        return self.customer.first_name
+        return self.user.first_name
 
     def customeremail(self):
-        return self.customer.email
+        return self.user.email

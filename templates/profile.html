@@ -135,16 +135,10 @@ function PreviewImage() {
             document.getElementById("editpic").src = oFREvent.target.result;
         };
     };
+setTimeout(function(){
+  document.getElementById("notification").style.display = "block";
+ }, 3000);
 </script>
-<script>
-	$(document).ready(function() {
-    setTimeout(function() {
-        $('#notification').fadeOut(1500);
-    }, 3000);
-
-
-});
-	</script>
 
 
 {% endblock %}
